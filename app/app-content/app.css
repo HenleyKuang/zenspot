@@ -100,7 +100,6 @@ about-values{
 
 body {
 font-family:'PT Sans', sans-serif;
-overflow:hidden;
 }
 
 #about-values i.fa {
@@ -154,6 +153,7 @@ margin-top:1%!important;
 background:url(bgmap.jpg) #000 no-repeat center!important;
 background-size: cover!important;
 opacity: 0.2!important;
+overflow: hidden!important;
 }
 
 .mt-md-0 {

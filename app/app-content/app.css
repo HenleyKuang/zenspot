@@ -89,7 +89,7 @@ margin:0 10px;
 
 .text-center {
     text-align: center!important;
-    display: inline;
+    display: inline!important;
 }
 
 .wrap-center {

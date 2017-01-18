@@ -87,6 +87,11 @@ color:#FFF;
 margin:0 10px;
 }
 
+.text-center {
+    text-align: center!important;
+    display: inline;
+}
+
 .wrap-center {
 margin-top:10%!important;
 text-align:center;

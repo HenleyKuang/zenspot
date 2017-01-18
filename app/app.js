@@ -45,6 +45,12 @@
 			});
 		}
 		
+		//function to fixed footer location on homepage
+		$rootScope.isActive = function () {
+			return $window.location.hash === '#/';
+
+		}  
+		
         // update active tab on state change
         //$rootScope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams) {
         //    $rootScope.activeTab = toState.data.activeTab;

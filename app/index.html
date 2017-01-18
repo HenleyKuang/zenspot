@@ -20,7 +20,7 @@
 	<link href="app-content/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
 </head>
 
-<body class="container">
+<body>
     <!-- header -->
     <header>
         	<nav class="navbar fixed-top navbar-toggleable-md navbar-light">
@@ -76,7 +76,15 @@
     <main ui-view></main>
 
     <!-- footer -->
-    <footer></footer>
+    <footer class="footer" ng-class="{'fixed-bottom': isActive('/home')}">
+		<div class="col-centered">
+				<div class="row justify-content-md-center">
+					<div class="col"> <a href="#"> <i class=" fa fa-facebook">   </i> </a> </div>
+					<div class="col"> <a href="#"> <i class="fa fa-twitter">   </i> </a> </div>
+					<div class="col"> <a href="#"> <i class="fa fa-google-plus">   </i> </a> </div>
+					<div class="col"> <a href="#"> <i class="fa fa-youtube">   </i> </a> </div>
+		</div>
+    </footer>
 
     <!-- external scripts -->
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>

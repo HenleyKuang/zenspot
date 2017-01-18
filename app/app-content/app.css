@@ -32,10 +32,24 @@ background-color:#2e6da4!important;
 .col-centered {
 float:none;
 margin:0 auto;
+text-align: center;
+}
+
+.fixed-top {
+	background-color: rgba(0, 0, 0, 0.1);
 }
 
 .flash-message {
     margin-top: 20px;
+}
+
+.footer {
+    bottom: 0;
+    width: 100%;
+    height: 60px;
+    line-height: 60px;
+    background-color: #000000;
+    color: white;
 }
 
 .form-container {
@@ -66,6 +80,7 @@ z-index:-100;
 .jumbotron {
 background:transparent!important;
 height:100%;
+margin-top: 10%!important;
 }
 
 .label-msg-center {
@@ -93,7 +108,7 @@ margin:0 10px;
 }
 
 .wrap-center {
-margin-top:10%!important;
+margin-top:5%!important;
 text-align:center;
 width:100%;
 }
@@ -105,6 +120,15 @@ about-values{
 
 body {
 font-family:'PT Sans', sans-serif;
+}
+
+body > .container {
+	padding-top: 60px;
+}
+
+footer i.fa {
+	padding-top: 15px;
+	font-size: 30px;
 }
 
 #about-values i.fa {

@@ -18,6 +18,12 @@
                 controller: 'Home.IndexController',
                 controllerAs: 'vm'
             })
+			.state('about', {
+                url: '/about',
+                templateUrl: 'about/index.html',
+                controller: 'About.IndexController',
+                controllerAs: 'vm'
+            })
             .state('account', {
                 url: '/account',
                 templateUrl: 'account/index.html',

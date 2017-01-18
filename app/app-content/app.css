@@ -154,6 +154,10 @@ display:none;
 margin-top:1%!important;
 }
 
+.form-container {
+    width: 300px;
+}
+
 .fullscreen-bg {
 background:url(bgmap.jpg) #000 no-repeat center!important;
 background-size: cover!important;

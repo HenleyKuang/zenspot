@@ -93,20 +93,43 @@ text-align:center;
 width:100%;
 }
 
+about-values{
+	font-size: 200%!important;
+	opacity: 0.8;
+}
+
 body {
 font-family:'PT Sans', sans-serif;
 overflow:hidden;
 }
 
-i.fa {
-    font-size: 40px;
+#about-values i.fa {
+    font-size: 60px;
     border: 4px solid #afd2e9;
-    width: 100px;
-    height: 100px;
-    padding: 27px 25px;
+    width: 150px;
+    height: 150px;
+    padding-top: 43px;
     margin-bottom: 10px;
     border-radius: 50%;
     transition: all 0.5s;
+}
+
+#about-values i.fa:hover {
+    border-color: #0e639a;
+    background-color: #0e639a;
+    color: white;
+}
+
+#about-who i.fa {
+	font-size: 30px;
+	margin-left: 5px;
+	margin-right: 5px;
+	color: #025aa5;
+	transition: all 0.5s;
+}
+
+#about-who i.fa:hover {
+	color: green;
 }
 
 small {

@@ -40,11 +40,15 @@
 			
 			<!--filler to move menu items to the right side -->
 			<ul class="navbar-nav mr-auto"></ul>	
+			<ul class="navbar-nav mt-md-0">
+				<li class="nav-item active">
+					<a class="nav-link" href="#"><button type="button" class="btn btn-outline-primary">Sell Spot</button></a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="/app/#/about">About</a>
+				</li>
+			</ul>
 			<ul class="navbar-nav mt-md-0" ng-if="!firstName">
-					<li class="nav-item active">
-						<a class="nav-link" href="#"><button type="button" class="btn btn-outline-primary">Sell Spot</button></a>
-					</li>
-					
 					<li class="nav-item">
 						<a class="nav-link" href="/register">Sign Up</a>
 					</li>

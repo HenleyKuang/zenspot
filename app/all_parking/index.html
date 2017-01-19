@@ -1,4 +1,8 @@
 ﻿<div class="form-container">
 	<h1>All Parking Spots</h1>
-    <a class="nav-link" href="#">{{vm.parking}}</a>
+        <ul>
+        <li ng-repeat="parking in vm.parkings" >
+            {{parking.address}}, {{parking.city}}, {{parking.state}}
+        </li>
+    </ul>
 </div>

@@ -8,15 +8,15 @@
     function Controller($window, UserService, ParkingService, FlashService) {
 			var vm = this;
 
-			vm.parking = null;
+			vm.parkings = null;
 			
 			initController();
 
 			function initController() {
 				// get all parking spots in database
 				ParkingService.GetAllParking()
-				.then(function (parking) {
-					vm.parking = parking;
+				.then(function (parkings) {
+					vm.parkings = parkings;
 				})
 				.catch(function (error) {
 					FlashService.Error(error);

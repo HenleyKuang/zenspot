@@ -66,6 +66,14 @@
 			return false;
 		}  
 		
+		$rootScope.navitems = [
+        {caption: 'About', condition: '!firstName', href: '/app/#/about'},
+        {caption: 'Sign Up', condition: '!firstName', href: '/register'},
+        {caption: 'Login', condition: '!firstName', href: '/login'},
+		{caption: $rootScope.firstName, condition: 'firstName', href: '/app/#/account'},
+		{caption: 'Logout', condition: 'firstName', href: '/logout'}
+    ];
+		
         // update active tab on state change
         //$rootScope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams) {
         //    $rootScope.activeTab = toState.data.activeTab;

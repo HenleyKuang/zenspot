@@ -29,6 +29,12 @@
                 templateUrl: 'account/index.html',
                 controller: 'Account.IndexController',
                 controllerAs: 'vm'
+            })
+			.state('new_parking', {
+                url: '/new_parking',
+                templateUrl: 'new_parking/index.html',
+                controller: 'New_Parking.IndexController',
+                controllerAs: 'vm'
             });
     }
 
@@ -45,10 +51,13 @@
 			});
 		}
 		
-		//function to fixed footer location on homepage
+		//function to fixed footer location based on window size
 		$rootScope.isActive = function () {
-			return $window.location.hash === '#/';
-
+			//console.log($window.location.hash);
+			//return ($window.location.hash === '#/') || ($window.location.hash === '');
+			if( document.documentElement.clientHeight > document.documentElement.offsetHeight )
+				return true;
+			return false;
 		}  
 		
         // update active tab on state change
@@ -56,7 +65,7 @@
         //    $rootScope.activeTab = toState.data.activeTab;
         //});
     }
-
+	
     // manually bootstrap angular after the JWT token is retrieved from the server
     $(function () {
         // get JWT token from server

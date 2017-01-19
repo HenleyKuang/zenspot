@@ -54,6 +54,8 @@ text-align: center;
 
 .form-container {
 	margin-top: 10%!important;
+	width: 70%;
+    margin: 0 auto;
 }
 
 .fullscreen-bg {

@@ -38,7 +38,7 @@ function getById(_id) {
 function getAllParking() {
 	var deferred = Q.defer();
 	
-	db.parking.find({}, { _id: false }s).toArray(function(err, collInfos) {
+	db.parking.find({}, { _id: false }).toArray(function(err, collInfos) {
     // collInfos is an array of collection info objects that look like:
     // { name: 'test', options: {} }
 		if (err) deferred.reject(err.name + ': ' + err.message);

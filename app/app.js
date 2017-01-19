@@ -35,6 +35,12 @@
                 templateUrl: 'new_parking/index.html',
                 controller: 'New_Parking.IndexController',
                 controllerAs: 'vm'
+            })
+			.state('all_parking', {
+                url: '/all_parking',
+                templateUrl: 'all_parking/index.html',
+                controller: 'All_Parking.IndexController',
+                controllerAs: 'vm'
             });
     }
 

@@ -3,18 +3,17 @@
 
     angular
         .module('app')
-        .controller('Account.IndexController', Controller);
+        .controller('New_Parking.IndexController', Controller);
 
-    function Controller($window, ParkingService, FlashService) {
+    function Controller($window, UserService, ParkingService, FlashService) {
 		if( $window.jwtToken !== undefined && $window.jwtToken != '')
 		{
 			var vm = this;
 
-			vm.user = null;
 			vm.addParking = addParking;
 
 			function addParking() {
-				ParkingService.Create(vm.user)
+				ParkingService.Create(vm.parking)
 					.then(function () {
 						FlashService.Success('Parking spot added!');
 					})

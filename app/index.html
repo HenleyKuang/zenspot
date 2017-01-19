@@ -42,7 +42,7 @@
 			<ul class="navbar-nav mr-auto"></ul>	
 			<ul class="navbar-nav mt-md-0">
 				<li class="nav-item active">
-					<a class="nav-link" href="#"><button type="button" class="btn btn-outline-primary">Rent Spot</button></a>
+					<a class="nav-link" href="/app/#/new_parking"><button type="button" class="btn btn-outline-primary">Rent Spot</button></a>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link" href="/app/#/about">About</a>
@@ -68,9 +68,11 @@
 			
 		</div>
 	</nav>
+	
+		<div class="flash-message" ng-if="flash">
+            <div class="{{'alert alert-' + flash.type}}" ng-bind="flash.message"></div>
+        </div>
     </header>
-	
-	
 
     <!-- main -->
     <main ui-view></main>
@@ -101,6 +103,7 @@
     <script src="account/index.controller.js"></script>
 	<script src="about/index.controller.js"></script>
 	<script src="new_parking/index.controller.js"></script>
+	<script src="all_parking/index.controller.js"></script>
 </body>
 
 </html>

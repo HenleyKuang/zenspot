@@ -10,6 +10,7 @@ db.bind('parking');
 var parking_service = {};
 
 parking_service.getById = getById;
+parking_service.getAllParking = getAllParking;
 parking_service.create = create;
 //parking_service.update = update;
 parking_service.delete = _delete;
@@ -32,6 +33,24 @@ function getById(_id) {
     });
 
     return deferred.promise;
+}
+
+function getAllParking() {
+	var deferred = Q.defer();
+	
+	db.parking.find().toArray(function(err, collInfos) {
+    // collInfos is an array of collection info objects that look like:
+    // { name: 'test', options: {} }
+		if (err) deferred.reject(err.name + ': ' + err.message);
+		if (collInfos) {
+			deferred.resolve(collInfos);
+		}
+		else {
+            // user not found
+            deferred.resolve();
+        }
+	});
+	return deferred.promise;
 }
 
 function create(parkingParam) {

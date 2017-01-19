@@ -4,7 +4,8 @@ var router = express.Router();
 var parkingService = require('services/parking.service');
 
 // routes
-router.post('/add', addParking);
+router.put('/add', addParking);
+router.get('/all', getAllParking);
 //router.get('/current', getCurrentUser);
 //router.put('/:_id', updateParking);
 //router.delete('/:_id', deleteParking);
@@ -16,6 +17,20 @@ function addParking(req, res) {
     parkingService.create(req.body)
         .then(function () {
             res.sendStatus(200);
+        })
+        .catch(function (err) {
+            res.status(400).send(err);
+        });
+}
+
+function getAllParking(req, res) {
+    parkingService.getAllParking()
+        .then(function (parking) {
+            if (parking) {
+                res.send(parking);
+            } else {
+                res.sendStatus(404);
+            }
         })
         .catch(function (err) {
             res.status(400).send(err);

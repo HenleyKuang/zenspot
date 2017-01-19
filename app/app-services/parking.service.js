@@ -8,7 +8,7 @@
     function Service($http, $q) {
         var service = {};
 
-        service.GetAll = GetAll;
+        service.GetAllParking = GetAllParking;
         service.GetById = GetById;
         service.Create = Create;
         service.Update = Update;
@@ -16,8 +16,8 @@
 
         return service;
 
-        function GetAll() {
-            return $http.get('/api/parking').then(handleSuccess, handleError);
+        function GetAllParking() {
+            return $http.get('/api/parking/all').then(handleSuccess, handleError);
         }
 
         function GetById(_id) {
@@ -25,7 +25,7 @@
         }
 
         function Create(parking) {
-            return $http.post('/api/parking', parking).then(handleSuccess, handleError);
+            return $http.put('/api/parking/add', parking).then(handleSuccess, handleError);
         }
 
         function Update(parking) {

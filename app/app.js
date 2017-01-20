@@ -42,6 +42,12 @@
                 controller: 'New_Parking.IndexController',
                 controllerAs: 'vm'
             })
+			.state('dashboard.your_listings', {
+                url: '/your_listings',
+                templateUrl: 'your_listings/index.html',
+                controller: 'Your_Listings.IndexController',
+                controllerAs: 'vm'
+            })
 			.state('search', {
                 url: '/search',
                 templateUrl: 'search/index.html',

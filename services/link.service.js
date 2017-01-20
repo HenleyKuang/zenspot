@@ -31,3 +31,22 @@ function setLink(_uid, _pid) {
 
     return deferred.promise;
 }
+
+function getLinks(_uid) {
+    var deferred = Q.defer();
+
+        db.parking.find( {_uid: _uid} ).toArray(function(err, collInfos) {
+    // collInfos is an array of collection info objects that look like:
+    // { name: 'test', options: {} }
+		if (err) deferred.reject(err.name + ': ' + err.message);
+		if (collInfos) {
+			deferred.resolve(collInfos);
+		}
+		else {
+            // user not found
+            deferred.resolve();
+        }
+	});
+
+    return deferred.promise;
+}

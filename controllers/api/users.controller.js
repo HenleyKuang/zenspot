@@ -8,7 +8,8 @@ var linkService = require('services/link.service');
 router.post('/authenticate', authenticateUser);
 router.post('/register', registerUser);
 router.get('/current', getCurrentUser);
-router.get('/link2', linkUserParking);
+router.get('/setlink', linkUserParking);
+router.get('/getlinks', getUserLinks);
 router.put('/:_id', updateUser);
 router.delete('/:_id', deleteUser);
 
@@ -72,14 +73,28 @@ function updateUser(req, res) {
 
 function linkUserParking(req, res) {
     var userId = req.user.sub;
-	console.log(userId);
-	console.log(req.query);
     if (req.query._uid !== userId) {
         // can only update own account
         return res.status(401).send('You can only update your own account');
     }
 
 	linkService.setLink(userId, req.query._pid)
+	.then(function () {
+		res.sendStatus(200);
+	})
+	.catch(function (err) {
+		res.status(400).send(err);
+	});
+}
+
+function getUserLinks(req, res) {
+    var userId = req.user.sub;
+    if (req.query._uid !== userId) {
+        // can only update own account
+        return res.status(401).send('You can only get links for your own account');
+    }
+
+	linkService.getLinks(userId)
 	.then(function () {
 		res.sendStatus(200);
 	})

@@ -44,7 +44,7 @@
         }
 		
 		function LinkUserParking(user, parkingid) {
-            return $http.put('/api/users/link', user, { params: { _pid: parkingid, _uid: user._id } }).then(handleSuccess, handleError);
+            return $http.put('/api/users/link2', user, { params: { _pid: parkingid, _uid: user._id } }).then(handleSuccess, handleError);
         }
 
         function Delete(_id) {

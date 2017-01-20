@@ -8,8 +8,8 @@ var linkService = require('services/link.service');
 router.post('/authenticate', authenticateUser);
 router.post('/register', registerUser);
 router.get('/current', getCurrentUser);
+router.put('/link2', linkUserParking);
 router.put('/:_id', updateUser);
-router.put('/link', linkUserParking);
 router.delete('/:_id', deleteUser);
 
 module.exports = router;

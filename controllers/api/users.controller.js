@@ -59,6 +59,7 @@ function updateUser(req, res) {
         return res.status(401).send('You can only update your own account');
     }
 	
+	console.log(req.params.parkingid);
 	if( req.params.parkingid )
 	{
 		userService.addnewparking(userId, parkingid)

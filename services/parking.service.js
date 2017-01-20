@@ -79,8 +79,6 @@ function create(parkingParam) {
             parkingParam,
             function (err, doc) {
                 if (err) deferred.reject(err.name + ': ' + err.message);
-				
-				console.log(doc);
                 deferred.resolve(doc);
             });
     }

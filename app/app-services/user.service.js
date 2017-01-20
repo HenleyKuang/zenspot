@@ -14,7 +14,6 @@
         service.GetByUsername = GetByUsername;
         service.Create = Create;
         service.Update = Update;
-		service.addParkingId = addParkingId;
         service.Delete = Delete;
 
         return service;

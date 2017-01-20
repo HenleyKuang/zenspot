@@ -8,7 +8,14 @@
 				<ul>
 					<div ng-repeat="parking in vm.parkings" >
 						<div class="row">
-							{{$index + 1}}.&nbsp <a href ng-click="vm.showParkingOnMap($index)"> {{parking.formatted_address}} </a>
+							<div class="card">
+							  <div class="card-block">
+								<h4 class="card-title">{{$index + 1}}.&nbsp <a href ng-click="vm.showParkingOnMap($index)"> {{parking.formatted_address}} </a> </h4>
+								<p class="card-text">Some quick example text of a search result's description.</p>
+								<a href="#" class="card-link">Link 1</a>
+								<a href="#" class="card-link">Link 2</a>
+							  </div>
+							</div>
 						</div>
 					</div>
 				</ul>

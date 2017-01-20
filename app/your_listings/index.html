@@ -1,20 +1,28 @@
-﻿<div class="wrap-center">
-	<div class="container">
+﻿<div class="form-container">
 		<div class="row justify-content-md-center text-center">
 			<h1>Your Parking Spots</h1>
 		</div>
-		<div class="row">
-			<div class="col">
+		<div class="row justify-content-md-center text-center">
 				<ul>
 					<div ng-repeat="parking in vm.parkings" >
-						<div class="row justify-content-md-center text-center">
-							{{$index + 1}}.&nbsp <a href ng-click="vm.showParkingOnMap($index)"> {{parking.formatted_address}} </a>
+						<div class="row">
+							<div class="card">
+								<div class="card-block">
+									<div class="row">
+										<div class="col-8">
+											<h4 class="card-title">{{$index + 1}}.&nbsp {{parking.formatted_address}}</h4>
+										</div>
+										<div class="col">
+											<button class="btn btn-primary" >Modify<a href="#"></a> </button>
+										</div>
+										<div class="col">
+											<button class="btn btn-danger" >Delete<a href="#"></a> </button>
+										</div>
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
 				</ul>
-			</div>
-			<div class="col">
-				<div id="map"></div>
-			</div>
 		</div>
 </div>

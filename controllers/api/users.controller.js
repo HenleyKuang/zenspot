@@ -58,7 +58,7 @@ function updateUser(req, res) {
     var userId = req.user.sub;
     if (req.params._id !== userId) {
         // can only update own account
-        return res.status(401).send('You can only update your own account');
+        return res.status(401).send('You can only update your own account1');
     }
 
 	userService.update(userId, req.body)

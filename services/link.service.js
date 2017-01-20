@@ -18,7 +18,7 @@ function setLink(_uid, _pid) {
 
         var linkset = {
 				_uid: _uid,
-				_pid: pid
+				_pid: _pid
 		};
 		
         db.link.insert(

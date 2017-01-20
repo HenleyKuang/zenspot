@@ -39,7 +39,7 @@
             return $http.post('/api/users', user).then(handleSuccess, handleError);
         }
 
-        function Update(user, parkingid) {
+        function Update(user) {
             return $http.put('/api/users/' + user._id, user).then(handleSuccess, handleError);
         }
 		

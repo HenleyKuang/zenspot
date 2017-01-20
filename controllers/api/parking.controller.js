@@ -25,18 +25,35 @@ function addParking(req, res) {
 }
 
 function searchParking(req, res) {
-	console.log(req.query.q);
-    parkingService.searchParking(req.query.q)
-        .then(function (parking) {
-            if (parking) {
-                res.send(parking);
-            } else {
-                res.sendStatus(404);
-            }
-        })
-        .catch(function (err) {
-            res.status(400).send(err);
-        });
+	//check if searching by id
+	if( req.query.q )
+	{
+		parkingService.getById(req.query.q)
+			.then(function (parking) {
+				if (parking) {
+					res.send(parking);
+				} else {
+					res.sendStatus(404);
+				}
+			})
+			.catch(function (err) {
+				res.status(400).send(err);
+			});
+	}
+	else //else do a search by query string
+	{
+		parkingService.searchParking(req.query.q)
+			.then(function (parking) {
+				if (parking) {
+					res.send(parking);
+				} else {
+					res.sendStatus(404);
+				}
+			})
+			.catch(function (err) {
+				res.status(400).send(err);
+			});
+	}
 }
 
 /*

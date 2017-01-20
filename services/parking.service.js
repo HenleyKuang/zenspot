@@ -20,12 +20,12 @@ module.exports = parking_service;
 function getById(_id) {
     var deferred = Q.defer();
 
-    db.parking.findById(_id, function (err, user) {
+    db.parking.findById(_id, function (err, parking) {
         if (err) deferred.reject(err.name + ': ' + err.message);
 
-        if (user) {
+        if (parking) {
             // return user (without hashed password)
-            deferred.resolve(_.omit(user, 'hash'));
+            deferred.resolve(parking);
         } else {
             // user not found
             deferred.resolve();

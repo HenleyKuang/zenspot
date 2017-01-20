@@ -14,6 +14,7 @@
         service.GetByUsername = GetByUsername;
         service.Create = Create;
         service.Update = Update;
+		service.addParkingId = addParkingId;
         service.Delete = Delete;
 
         return service;
@@ -38,8 +39,8 @@
             return $http.post('/api/users', user).then(handleSuccess, handleError);
         }
 
-        function Update(user) {
-            return $http.put('/api/users/' + user._id, user).then(handleSuccess, handleError);
+        function Update(user, parkingid) {
+            return $http.put('/api/users/' + user._id, user, { params: { _id: user._id, parkingid: parkingid} }).then(handleSuccess, handleError);
         }
 
         function Delete(_id) {

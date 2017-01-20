@@ -29,10 +29,10 @@
 						vm.parking.formatted_address = results[0].formatted_address;
 						
 						ParkingService.Create(vm.parking)
-						.then(function (data) {
-							console.log(data);
+						.then(function (doc) {
+							var parking_id = doc.insertedIds[0];
 							//update current user with parking space id
-							UserService.Update(vm.user)
+							UserService.Update(vm.user, parking_id)
 							.then(function () {
 								FlashService.Success('Parking spot added!');
 							})

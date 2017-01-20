@@ -8,6 +8,7 @@ router.post('/authenticate', authenticateUser);
 router.post('/register', registerUser);
 router.get('/current', getCurrentUser);
 router.put('/:_id', updateUser);
+router.put('/useraddparking', updateUserParking);
 router.delete('/:_id', deleteUser);
 
 module.exports = router;
@@ -58,14 +59,27 @@ function updateUser(req, res) {
         // can only update own account
         return res.status(401).send('You can only update your own account');
     }
-
-    userService.update(userId, req.body)
-        .then(function () {
-            res.sendStatus(200);
-        })
-        .catch(function (err) {
-            res.status(400).send(err);
-        });
+	
+	if( req.params.parkingid )
+	{
+		userService.addnewparking(userId, parkingid)
+		.then(function () {
+			res.sendStatus(200);
+		})
+		.catch(function (err) {
+			res.status(400).send(err);
+		});
+	}
+	else
+	{
+		userService.update(userId, req.body)
+		.then(function () {
+			res.sendStatus(200);
+		})
+		.catch(function (err) {
+			res.status(400).send(err);
+		});
+	}
 }
 
 function deleteUser(req, res) {

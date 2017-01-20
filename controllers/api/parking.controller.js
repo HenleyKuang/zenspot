@@ -26,9 +26,9 @@ function addParking(req, res) {
 
 function searchParking(req, res) {
 	//check if searching by id
-	if( req.query.q )
+	if( req.query.q._id )
 	{
-		parkingService.getById(req.query.q)
+		parkingService.getById(req.query.q._id)
 			.then(function (parking) {
 				if (parking) {
 					res.send(parking);

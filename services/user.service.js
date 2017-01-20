@@ -13,7 +13,6 @@ service.authenticate = authenticate;
 service.getById = getById;
 service.create = create;
 service.update = update;
-service.addnewparking = addnewparking;
 service.delete = _delete;
 
 module.exports = service;

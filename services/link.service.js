@@ -28,7 +28,6 @@ function setLink(userId, pid) {
 
                 deferred.resolve();
             });
-    }
 
     return deferred.promise;
 }

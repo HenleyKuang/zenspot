@@ -76,7 +76,7 @@ function linkUserParking(req, res) {
 	console.log(req.params._id);
     if (req.params._id !== userId) {
         // can only update own account
-        return res.status(401).send('You can only update your own account');
+        return res.status(401).send('You can only update your own account' + userId);
     }
 
 	linkService.setLink(userId, req.params._pid)

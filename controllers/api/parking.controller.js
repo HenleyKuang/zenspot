@@ -25,6 +25,7 @@ function addParking(req, res) {
 }
 
 function searchParking(req, res) {
+	console.log(req.query.q);
     parkingService.searchParking(req.query.q)
         .then(function (parking) {
             if (parking) {

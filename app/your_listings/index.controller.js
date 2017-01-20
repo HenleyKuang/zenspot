@@ -20,15 +20,17 @@
 					
 					function getParkingInformation(parking){
 						var pid = parking._pid;
+						console.log(pid);
 						
 						//get parking information by parking id
 						var query = {
-							_pid: pid;
-						}
+							_id: pid
+						};
+						
 						ParkingService.SearchParking( query )
 						.then(function (parking_details) {
 							console.log(parking_details);
-						}
+						});
 					}
 				});	
 			});	

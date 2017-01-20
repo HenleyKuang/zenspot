@@ -10,6 +10,7 @@ db.bind('link');
 var service = {};
 
 service.setLink = setLink;
+service.getLinks = getLinks;
 
 module.exports = service;
 
@@ -35,7 +36,7 @@ function setLink(_uid, _pid) {
 function getLinks(_uid) {
     var deferred = Q.defer();
 
-        db.parking.find( {_uid: _uid} ).toArray(function(err, collInfos) {
+        db.link.find( {_uid: _uid} ).toArray(function(err, collInfos) {
     // collInfos is an array of collection info objects that look like:
     // { name: 'test', options: {} }
 		if (err) deferred.reject(err.name + ': ' + err.message);

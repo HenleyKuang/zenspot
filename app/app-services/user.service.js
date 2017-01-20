@@ -15,6 +15,7 @@
         service.Create = Create;
         service.Update = Update;
 		service.LinkUserParking = LinkUserParking;
+		service.getUserLinks = getUserLinks;
         service.Delete = Delete;
 
         return service;

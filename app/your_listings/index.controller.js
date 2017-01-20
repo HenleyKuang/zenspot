@@ -14,12 +14,12 @@
 			vm.user = null;
 			UserService.GetCurrent().then(function (user) {
 				vm.user = user;
-				UserService.getUserLinks().then(function(parkings))
+				UserService.getUserLinks(vm.user).then(function(parkings)
 				{
 					console.log(parkings);
-				}
 				});	
+			});	
 		}
-    }
+	}
 
 })();

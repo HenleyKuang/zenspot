@@ -95,8 +95,8 @@ function getUserLinks(req, res) {
     }
 
 	linkService.getLinks(userId)
-	.then(function () {
-		res.sendStatus(200);
+	.then(function (parking) {
+		res.send(parking);
 	})
 	.catch(function (err) {
 		res.status(400).send(err);

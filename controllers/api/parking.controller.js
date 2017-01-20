@@ -6,7 +6,6 @@ var parkingService = require('services/parking.service');
 // routes
 router.put('/add', addParking);
 router.get('/search', searchParking);
-router.get('/all', getAllParking);
 //router.get('/current', getCurrentUser);
 //router.put('/:_id', updateParking);
 //router.delete('/:_id', deleteParking);

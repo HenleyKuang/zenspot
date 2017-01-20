@@ -15,8 +15,9 @@ module.exports = router;
 
 function addParking(req, res) {
     parkingService.create(req.body)
-        .then(function (data) {
-            res.send({data: data});
+        .then(function (doc) {
+			if( doc )
+				res.send(doc);
         })
         .catch(function (err) {
             res.status(400).send(err);

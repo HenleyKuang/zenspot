@@ -81,7 +81,7 @@ function create(parkingParam) {
                 if (err) deferred.reject(err.name + ': ' + err.message);
 				
 				console.log(doc);
-                deferred.resolve({ id: doc._id});
+                deferred.resolve(doc);
             });
     }
 

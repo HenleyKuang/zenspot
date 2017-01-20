@@ -13,7 +13,6 @@
 			vm.user = null;
 			vm.saveUser = saveUser;
 			vm.deleteUser = deleteUser;
-			vm.getAll = getAll;
 
 			initController();
 

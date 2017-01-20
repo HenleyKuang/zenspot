@@ -36,10 +36,10 @@
                 controller: 'New_Parking.IndexController',
                 controllerAs: 'vm'
             })
-			.state('all_parking', {
-                url: '/all_parking',
-                templateUrl: 'all_parking/index.html',
-                controller: 'All_Parking.IndexController',
+			.state('search', {
+                url: '/search',
+                templateUrl: 'search/index.html',
+                controller: 'Search.IndexController',
                 controllerAs: 'vm'
             });
     }
@@ -64,15 +64,7 @@
 			if( document.documentElement.clientHeight > document.documentElement.offsetHeight )
 				return true;
 			return false;
-		}  
-		
-		$rootScope.navitems = [
-        {caption: 'About', condition: '!firstName', href: '/app/#/about'},
-        {caption: 'Sign Up', condition: '!firstName', href: '/register'},
-        {caption: 'Login', condition: '!firstName', href: '/login'},
-		{caption: $rootScope.firstName, condition: 'firstName', href: '/app/#/account'},
-		{caption: 'Logout', condition: 'firstName', href: '/logout'}
-    ];
+		}
 		
         // update active tab on state change
         //$rootScope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams) {

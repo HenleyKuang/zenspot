@@ -19,7 +19,8 @@ module.exports = service;
 
 function authenticate(username, password) {
     var deferred = Q.defer();
-
+	username = username.toLowerCase();
+	
     db.users.findOne({ username: username }, function (err, user) {
         if (err) deferred.reject(err.name + ': ' + err.message);
 
@@ -55,7 +56,8 @@ function getById(_id) {
 
 function create(userParam) {
     var deferred = Q.defer();
-
+	userParam.username = userParam.username.toLowerCase();
+	
     // validation
     db.users.findOne(
         { username: userParam.username },

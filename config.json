@@ -1,5 +1,5 @@
 ﻿{
     "connectionString": "mongodb://henleyk:test1234@ds159998.mlab.com:59998/myzenspot",
-    "apiUrl": "http://localhost:3000/api",
+    "apiUrl": "https://zenspot.herokuapp.com/api",
     "secret": "SECRETSAUCETRACEYMCGRADY!!!"
 }

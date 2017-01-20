@@ -60,9 +60,9 @@ function updateUser(req, res) {
     }
 	
 	console.log(req.params);
-	if( req.params.parkingid )
+	if( req.params.pid )
 	{
-		userService.addnewparking(userId, parkingid)
+		userService.addnewparking(userId, req.params.pid)
 		.then(function () {
 			res.sendStatus(200);
 		})

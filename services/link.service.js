@@ -13,11 +13,11 @@ service.setLink = setLink;
 
 module.exports = service;
 
-function setLink(userId, pid) {
+function setLink(_uid, _pid) {
     var deferred = Q.defer();
 
         var linkset = {
-				_uid: userId,
+				_uid: _uid,
 				_pid: pid
 		};
 		

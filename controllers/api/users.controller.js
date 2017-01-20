@@ -2,12 +2,14 @@
 var express = require('express');
 var router = express.Router();
 var userService = require('services/user.service');
+var linkService = require('services/link.service');
 
 // routes
 router.post('/authenticate', authenticateUser);
 router.post('/register', registerUser);
 router.get('/current', getCurrentUser);
 router.put('/:_id', updateUser);
+router.put('/link', linkUserParking);
 router.delete('/:_id', deleteUser);
 
 module.exports = router;
@@ -58,28 +60,30 @@ function updateUser(req, res) {
         // can only update own account
         return res.status(401).send('You can only update your own account');
     }
-	
-	console.log(req.params);
-	if( req.params.pid )
-	{
-		userService.addnewparking(userId, req.params.pid)
-		.then(function () {
-			res.sendStatus(200);
-		})
-		.catch(function (err) {
-			res.status(400).send(err);
-		});
-	}
-	else
-	{
-		userService.update(userId, req.body)
-		.then(function () {
-			res.sendStatus(200);
-		})
-		.catch(function (err) {
-			res.status(400).send(err);
-		});
-	}
+
+	userService.update(userId, req.body)
+	.then(function () {
+		res.sendStatus(200);
+	})
+	.catch(function (err) {
+		res.status(400).send(err);
+	});
+}
+
+function linkUserParking(req, res) {
+    var userId = req.user.sub;
+    if (req.params._id !== userId) {
+        // can only update own account
+        return res.status(401).send('You can only update your own account');
+    }
+
+	linkService.setLink(userId, req.params._pid)
+	.then(function () {
+		res.sendStatus(200);
+	})
+	.catch(function (err) {
+		res.status(400).send(err);
+	});
 }
 
 function deleteUser(req, res) {

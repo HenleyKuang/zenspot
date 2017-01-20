@@ -14,6 +14,7 @@
         service.GetByUsername = GetByUsername;
         service.Create = Create;
         service.Update = Update;
+		service.LinkUserParking = LinkUserParking;
         service.Delete = Delete;
 
         return service;
@@ -40,6 +41,10 @@
 
         function Update(user, parkingid) {
             return $http.put('/api/users/' + user._id, user, { params: { pid: parkingid} }).then(handleSuccess, handleError);
+        }
+		
+		function LinkUserParking(user, parkingid) {
+            return $http.put('/api/users/link', user, { params: { _id: user._id, pid: parkingid} }).then(handleSuccess, handleError);
         }
 
         function Delete(_id) {

@@ -144,40 +144,6 @@ function update(_id, userParam) {
     return deferred.promise;
 }
 
-function addnewparking(_id, parking_id) {
-    var deferred = Q.defer();
-
-    //get user by id
-    db.users.findById(_id, function (err, user) {
-        if (err) deferred.reject(err.name + ': ' + err.message);
-		else addParkingId(user);
-    });
-
-    function addParkingId(user) {
-        // fields to add
-		var parkingids = null;
-		if (user.parkingids === undefined || user.parkingids == null )
-			parkingids = new Array();
-		else
-			parkingids = user.parkingids;
-		
-		parkingids.push(parking_id);
-        var set = { parkingids: parkingids };
-		console.log(set);
-		
-        db.users.update(
-            { _id: mongo.helper.toObjectID(_id) },
-            { $set: set },
-            function (err, doc) {
-                if (err) deferred.reject(err.name + ': ' + err.message);
-
-                deferred.resolve();
-            });
-    }
-
-    return deferred.promise;
-}
-
 function _delete(_id) {
     var deferred = Q.defer();
 

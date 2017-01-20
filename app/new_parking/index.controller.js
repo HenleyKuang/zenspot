@@ -31,8 +31,9 @@
 						ParkingService.Create(vm.parking)
 						.then(function (doc) {
 							var parking_id = doc.insertedIds[0];
+							consoloe.log(parking_id);
 							//update current user with parking space id
-							UserService.Update(vm.user, parking_id)
+							UserService.LinkUserParking(vm.user, parking_id)
 							.then(function () {
 								FlashService.Success('Parking spot added!');
 							})

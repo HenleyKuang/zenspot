@@ -20,8 +20,10 @@
 				  center: centerLatLng
 				});
 			
-			// get all parking spots in database
-			ParkingService.GetAllParking()
+			// search for parking spots in database
+			var search_query = {};
+			
+			ParkingService.SearchParking( search_query )
 			.then(function (parkings) {
 				vm.parkings = parkings;
 				

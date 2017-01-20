@@ -5,6 +5,7 @@ var parkingService = require('services/parking.service');
 
 // routes
 router.put('/add', addParking);
+router.get('/search', searchParking);
 router.get('/all', getAllParking);
 //router.get('/current', getCurrentUser);
 //router.put('/:_id', updateParking);
@@ -24,8 +25,8 @@ function addParking(req, res) {
         });
 }
 
-function getAllParking(req, res) {
-    parkingService.getAllParking()
+function searchParking(req, res) {
+    parkingService.searchParking(req.query.q)
         .then(function (parking) {
             if (parking) {
                 res.send(parking);

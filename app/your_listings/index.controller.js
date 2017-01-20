@@ -16,7 +16,20 @@
 				vm.user = user;
 				UserService.getUserLinks(vm.user).then(function(parkings)
 				{
-					console.log(parkings);
+					parkings.forEach(getParkingInformation);
+					
+					function getParkingInformation(parking){
+						var pid = parking._pid;
+						
+						//get parking information by parking id
+						var query = {
+							_pid: pid;
+						}
+						ParkingService.SearchParking( query )
+						.then(function (parking_details) {
+							console.log(parking_details);
+						}
+					}
 				});	
 			});	
 		}

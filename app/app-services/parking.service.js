@@ -17,7 +17,7 @@
         return service;
 
         function SearchParking(query) {
-            return $http.get('/api/parking/search', { params: { q: query } } ).then(handleSuccess, handleError);
+            return $http.get('/api/parking/search', { params: query } ).then(handleSuccess, handleError);
         }
 
         function GetById(_id) {

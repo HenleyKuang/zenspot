@@ -12,6 +12,7 @@
 
 			//get current user
 			vm.user = null;
+			vm.parkings = new Array();
 			UserService.GetCurrent().then(function (user) {
 				vm.user = user;
 				UserService.getUserLinks(vm.user).then(function(parkings)
@@ -20,7 +21,6 @@
 					
 					function getParkingInformation(parking){
 						var pid = parking._pid;
-						console.log(pid);
 						
 						//get parking information by parking id
 						var query = {
@@ -29,7 +29,7 @@
 						
 						ParkingService.SearchParking( query )
 						.then(function (parking_details) {
-							console.log(parking_details);
+							vm.parkings.push(parking_details);
 						});
 					}
 				});	

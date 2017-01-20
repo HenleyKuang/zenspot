@@ -27,7 +27,6 @@ function addParking(req, res) {
 function searchParking(req, res) {
 	//check if searching by id
 	var _pid = req.query._id;
-	console.log(_pid);
 	if( _pid )
 	{
 		parkingService.getById(_pid)
@@ -44,7 +43,11 @@ function searchParking(req, res) {
 	}
 	else //else do a search by query string
 	{
-		parkingService.searchParking(req.query.q)
+		var search_q = {
+			//create search query using parameters passed through req.query
+		};
+		
+		parkingService.searchParking( search_q )
 			.then(function (parking) {
 				if (parking) {
 					res.send(parking);

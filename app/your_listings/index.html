@@ -1,4 +1,4 @@
-﻿<div class="wrap-center col-centered">
+﻿<div class="wrap-center">
 	<div class="container">
 		<div class="row justify-content-md-center text-center">
 			<h1>Your Parking Spots</h1>
@@ -7,7 +7,7 @@
 			<div class="col">
 				<ul>
 					<div ng-repeat="parking in vm.parkings" >
-						<div class="row">
+						<div class="row justify-content-md-center text-center">
 							{{$index + 1}}.&nbsp <a href ng-click="vm.showParkingOnMap($index)"> {{parking.formatted_address}} </a>
 						</div>
 					</div>

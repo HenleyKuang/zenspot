@@ -46,7 +46,7 @@
 				<ul class="navbar-nav mt-md-0">
 					<div>
 						<li class="nav-item active">
-							<a class="nav-link" href="/app/#/new_parking"><button type="button" class="btn btn-outline-primary">Rent Spot</button></a>
+							<a class="nav-link" href="/app/#/dashboard/new_parking"><button type="button" class="btn btn-outline-primary">Rent Spot</button></a>
 						</li>
 					</div>
 					<div ng-if="!firstName">
@@ -66,7 +66,7 @@
 					</div>
 					<div ng-if="firstName">
 						<li class="nav-item active">
-							<a class="nav-link" href="/app/#/account">{{firstName}}</a>
+							<a class="nav-link" href="/app/#/dashboard/account">{{firstName}}</a>
 						</li>
 					</div>
 					<div ng-if="firstName">
@@ -109,6 +109,7 @@
     <script src="app-services/flash.service.js"></script>
 	<script src="app-services/typed.js"></script>
     <script src="home/index.controller.js"></script>
+	<script src="dashboard/index.controller.js"></script>
     <script src="account/index.controller.js"></script>
 	<script src="about/index.controller.js"></script>
 	<script src="new_parking/index.controller.js"></script>

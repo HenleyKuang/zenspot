@@ -18,19 +18,25 @@
                 controller: 'Home.IndexController',
                 controllerAs: 'vm'
             })
+			.state('dashboard', {
+                url: '/dashboard',
+                templateUrl: 'dashboard/index.html',
+                controller: 'Dashboard.IndexController',
+                controllerAs: 'vm'
+            })
 			.state('about', {
                 url: '/about',
                 templateUrl: 'about/index.html',
                 controller: 'About.IndexController',
                 controllerAs: 'vm'
             })
-            .state('account', {
+            .state('dashboard.account', {
                 url: '/account',
                 templateUrl: 'account/index.html',
                 controller: 'Account.IndexController',
                 controllerAs: 'vm'
             })
-			.state('new_parking', {
+			.state('dashboard.new_parking', {
                 url: '/new_parking',
                 templateUrl: 'new_parking/index.html',
                 controller: 'New_Parking.IndexController',

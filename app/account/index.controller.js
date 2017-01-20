@@ -44,8 +44,5 @@
 					});
 			}
 		}
-			else
-				$window.location = '/login?returnUrl=/app/#/account';
-    }
-
+	}
 })();

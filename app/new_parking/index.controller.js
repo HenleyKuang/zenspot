@@ -10,6 +10,12 @@
 		{
 			var vm = this;
 
+			//get current user
+			vm.user = null;
+			UserService.GetCurrent().then(function (user) {
+						vm.user = user;
+					});
+			
 			vm.addParking = addParking;
 
 			function addParking() {	
@@ -23,22 +29,28 @@
 						vm.parking.formatted_address = results[0].formatted_address;
 						
 						ParkingService.Create(vm.parking)
-						.then(function () {
-							FlashService.Success('Parking spot added!');
+						.then(function (data) {
+							console.log(data);
+							//update current user with parking space id
+							UserService.Update(vm.user)
+							.then(function () {
+								FlashService.Success('Parking spot added!');
+							})
+							.catch(function (error) {
+								FlashService.Error(error);
+							});
 						})
 						.catch(function (error) {
 							FlashService.Error(error);
 						});
 						
 					  } else {
-						FlashService.Error('Format Address was not successful for the following reason: ' + status);
+						FlashService.Error('Format Address was not successful. The following error occurred: ' + status);
 					  }
 					});
 				  }
 			}
 		}
-			else
-				$window.location = '/login?returnUrl=/app/#/account';
     }
 
 })();

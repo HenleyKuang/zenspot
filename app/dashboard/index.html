@@ -31,6 +31,10 @@
 </div>
 
 <div class="col maindash"> 
+<div class="flash-message text-center ng-scope" ng-if="flash">
+	<div class="alert alert-success" ng-bind="flash.message">Parking spot added!</div>
+</div>
+		
 <div class="ui-view"> </div>
 </div>
 

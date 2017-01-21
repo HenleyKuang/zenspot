@@ -16,6 +16,9 @@
 						vm.user = user;
 					});
 			
+			vm.days = ['Sun', 'Mon', 'Tue', 
+				'Wed', 'Thu', 'Fri', 'Sat'];
+			
 			// Custom drop down list using google's autocomplete api
 			/* 
 			var service = new google.maps.places.AutocompleteService();
@@ -56,38 +59,62 @@
 				$('.pac-container').removeClass('pac-logo');
 			}
 			
+			autocomplete.addListener('place_changed', function() {
+			  var place = autocomplete.getPlace();
+			  if (place.geometry) {
+				address_box.value = place.formatted_address;
+				vm.parking.address = place.formatted_address;
+			  }
+			});
+			
 			vm.addParking = addParking;
 
 			function addParking() {	
-				var address = vm.parking.address + ", " + vm.parking.city + ", " + vm.parking.state;
-				var geocoder = new google.maps.Geocoder();
-				formatAddress(geocoder, address);
+				if( vm.parking !== undefined )
+				{
+					var address = vm.parking.address;
+					var geocoder = new google.maps.Geocoder();
+					formatAddress(geocoder, address);
 
-				function formatAddress(geocoder, address) {
-					geocoder.geocode({'address': address}, function(results, status) {
-					  if (status === 'OK') {					
-						vm.parking.formatted_address = results[0].formatted_address;
-						
-						ParkingService.Create(vm.parking)
-						.then(function (doc) {
-							var parking_id = doc.insertedIds[0];
-							UserService.LinkUserParking(vm.user, parking_id)
-							.then(function () {
-								FlashService.Success('Parking spot added!');
+					function formatAddress(geocoder, address) {
+						geocoder.geocode({'address': address}, function(results, status) {
+						  if (status === 'OK') {	
+						  
+							/* this part needs to be recoded to traverse address component types 
+								currently hard-coded indexes */
+							if( results[0].address_components[0].types[0] != 'street_number' )
+								var add = 1;
+							else add = 0;
+							
+							vm.parking.formatted_address = results[0].formatted_address;
+							vm.parking.zip = results[0].address_components[7 + add].short_name;
+							vm.parking.state = results[0].address_components[5 + add].short_name;
+							vm.parking.city = results[0].address_components[3 + add].long_name;
+							//vm.parking.short_address = results[0].address_components[0 + add].long_name
+							//	+ ' ' + results[0].address_components[1 + add].long_name;
+							/* end of part that needs to be recoded */
+							
+							ParkingService.Create(vm.parking)
+							.then(function (doc) {
+								var parking_id = doc.insertedIds[0];
+								UserService.LinkUserParking(vm.user, parking_id)
+								.then(function () {
+									FlashService.Success('Parking spot added!');
+								})
+								.catch(function (error) {
+									FlashService.Error(error);
+								});
 							})
 							.catch(function (error) {
 								FlashService.Error(error);
 							});
-						})
-						.catch(function (error) {
-							FlashService.Error(error);
+							
+						  } else {
+							FlashService.Error('Format Address was not successful. The following error occurred: ' + status);
+						  }
 						});
-						
-					  } else {
-						FlashService.Error('Format Address was not successful. The following error occurred: ' + status);
 					  }
-					});
-				  }
+				}
 			}
 		}
     }

@@ -1,17 +1,17 @@
-﻿<div class="form-container">
-		<div class="row justify-content-md-center text-center">
-			<h1>Your Parking Spots</h1>
-		</div>
-		<div class="row justify-content-md-center text-center">
-				<ul>
-					<div ng-repeat="parking in vm.parkings" >
-						<div class="row">
-							<div class="card">
-								<div class="card-block">
+﻿<div class="dashboard-container">
+<div class="row">
+	<h1>Your Parking Spots</h1>
+</div>
+			<div ng-repeat="parking in vm.parkings" >
+				<div class="row">
+					<div class="card">
+						<div class="card-block">
+							<div class="row">
+								<div class="col-8">
+									<h4 class="card-text">{{$index + 1}}.&nbsp {{parking.formatted_address}}</h4>
+								</div>
+								<div class="col">
 									<div class="row">
-										<div class="col-8">
-											<h4 class="card-title">{{$index + 1}}.&nbsp {{parking.formatted_address}}</h4>
-										</div>
 										<div class="col">
 											<button class="btn btn-primary" >Modify<a href="#"></a> </button>
 										</div>
@@ -23,6 +23,6 @@
 							</div>
 						</div>
 					</div>
-				</ul>
-		</div>
+				</div>
+			</div>
 </div>

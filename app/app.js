@@ -66,7 +66,11 @@
 						//console.log(user);
 						$rootScope.firstName = user.firstName;
 						//console.log('user set: ' + $rootScope.firstName ); 
-			});
+			})
+			.catch(function (error) {
+						delete $window.jwtToken;
+						$window.location = '/login?returnUrl=' + encodeURIComponent('/app' + $window.location.hash);
+					});;
 		}
 		
 		//function to fixed footer location based on window size

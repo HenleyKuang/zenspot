@@ -89,7 +89,7 @@
 					function formatAddress(geocoder, address) {
 						geocoder.geocode({'address': address}, function(results, status) {
 						  if (status === 'OK') {	
-						  
+							console.log(results[0]);
 							/* this part needs to be recoded to traverse address component types 
 								currently hard-coded indexes */
 							if( results[0].address_components[0].types[0] != 'street_number' )

@@ -5,7 +5,7 @@
         .module('app')
         .controller('Dashboard.IndexController', Controller);
 
-    function Controller($window, UserService, FlashService) {
+    function Controller($rootScope, $window, UserService, FlashService) {
 		if( $window.jwtToken !== undefined && $window.jwtToken != '')
 		{
 			$(".nav a").on("click", function(){
@@ -13,6 +13,7 @@
 			   $(this).addClass("active");
 			});
 			
+			$rootScope.iFade = true;
 			//set active based on href
 			var loc_array = $window.location.hash.split("/");
 			var loc = loc_array[loc_array.length-1];

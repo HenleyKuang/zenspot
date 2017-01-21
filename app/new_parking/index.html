@@ -1,8 +1,8 @@
 ﻿<div class="dashboard-container">
 	<h1>New Parking for Rent</h1>
-    <form method="post">
+    <form name="newparking">
 			<div class="form-group">
-				<input type="text" id="address" class="address form-control w-75 mt-3" placeholder="What is the address of the parking space you would like to list for rent?" autocomplete="off" ng-model="vm.parking.address" required />
+				<input type="text" id="address" class="address form-control w-75 mt-3" placeholder="What is the address of the parking space you would like to list for rent?" autocomplete="off" ng-model="vm.parking.address" ng-required="true" />
 			</div>
 		
 		<!-- 
@@ -34,7 +34,7 @@
 		
 		<div class="input-group w-50 mt-3">
 			<span class="input-group-addon">$</span>
-			<input type="text" id="price" class="form-control" placeholder="What is the hourly rate?" ng-model="vm.parking.rate" required />
+			<input type="text" id="price" class="form-control" placeholder="What is the hourly rate?" ng-model="vm.parking.rate" ng-required="true" />
 			<span class="input-group-addon">USD</span>
 		</div>
 			
@@ -50,13 +50,13 @@
 		-->
 		<div class="form-group mt-3">
 			<label>What is the minimum rental time?</label>
-			<select class="form-control w-25" ng-options="time as time for time in vm.times" ng-model="vm.parking.minimumTime" required>
+			<select class="form-control w-25" ng-options="time as time for time in vm.times" ng-model="vm.parking.minimumTime" ng-required="true" >
 			</select>
 		</div>
 
 		
         <div class="form-group mt-3">
-            <button class="btn btn-primary" ng-click="vm.addParking()">Add</button>
+            <button class="btn btn-primary" ng-click="newparking.$valid && vm.addParking()">Add</button>
         </div>
     </form>
 </div>

@@ -44,14 +44,14 @@
 				<!--filler to move menu items to the right side -->
 				<ul class="navbar-nav mr-auto"></ul>	
 				<ul class="navbar-nav mt-md-0">
-					<div>
+					<!-- <div>
 						<li class="nav-item active">
 							<a class="nav-link" href="/app/#/dashboard/new_parking"><button type="button" class="btn btn-outline-primary">Rent Spot</button></a>
 						</li>
-					</div>
+					</div> -->
 					<div ng-if="!firstName">
 						<li class="nav-item">
-							<a class="nav-link" href="/app/#/about">About</a>
+							<a class="nav-link active" href="/app/#/about">About</a>
 						</li>
 					</div>
 					<div ng-if="!firstName">
@@ -66,7 +66,10 @@
 					</div>
 					<div ng-if="firstName">
 						<li class="nav-item active">
-							<a class="nav-link" href="/app/#/dashboard/account">{{firstName}}</a>
+							<a class="nav-link" href="/app/#/dashboard/account">
+								<i class="fa fa-user-circle-o" aria-hidden="true"></i>
+									{{firstName}}
+							</a>
 						</li>
 					</div>
 					<div ng-if="firstName">
@@ -112,5 +115,6 @@
 	<script src="your_listings/index.controller.js"></script>
 	<script src="search/index.controller.js"></script>
 </body>
+<script>document.body.className += ' fade-out';</script>
 
 </html>

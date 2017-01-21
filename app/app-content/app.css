@@ -46,6 +46,10 @@ text-align: center;
     margin: 0 auto;
 }
 
+.fa-user-circle-o {
+	//font-size: 30px!important;
+}
+
 .fixed-top {
 	background-color: rgba(0, 0, 0, 0.1);
 }
@@ -63,6 +67,11 @@ text-align: center;
 	margin-top: 10%!important;
 	width: 70%;
     margin: 0 auto;
+}
+
+.front-page-title {
+color:green!important;
+font-size:100%!important;
 }
 
 .fullscreen-bg {
@@ -131,7 +140,7 @@ margin:0 10px;
 
 .sidebar {
   position: fixed;
-  top: 65px;
+  top: 55px;
   bottom: 0;
   left: 0;
   z-index: 1000;
@@ -235,15 +244,19 @@ footer i.fa {
     min-height: 500px;
 }
 
+#main-ui {
+	opacity: 0;
+    transition: 1s opacity;
+}
+
+#main-ui.fade-in {
+    opacity: 1;
+}
+
 /*
 #about-who img:hover {
     border-style: solid;
 }*/
-
-small {
-color:green!important;
-font-size:100%!important;
-}
 
 strong {
 font-size:200%;

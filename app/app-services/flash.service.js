@@ -39,6 +39,8 @@
                 type: 'success', 
                 keepAfterLocationChange: keepAfterLocationChange
             };
+			
+			setTimeout(function() { delete $rootScope.flash; }, 5000);	
         }
 
         function Error(message, keepAfterLocationChange) {

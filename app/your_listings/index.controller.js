@@ -12,6 +12,8 @@
 
 			//get current user
 			vm.user = null;
+			vm.loading = true;
+			
 			vm.parkings = new Array();
 			UserService.GetCurrent().then(function (user) {
 				vm.user = user;
@@ -32,6 +34,9 @@
 							vm.parkings.push(parking_details);
 						});
 					}
+				})
+				.finally(function () {
+					vm.loading = false;
 				});	
 			});	
 		}

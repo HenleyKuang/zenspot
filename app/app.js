@@ -55,21 +55,26 @@
                 controllerAs: 'vm'
             });
     }
+	
+	function refreshToken()
+	{
+	  $.get('/app/token', function (token) {
+		window.jwtToken = token;
+	  });
+	}
 
     function run($http, $rootScope, $window, UserService) {
         // add JWT token as default auth header
         $http.defaults.headers.common['Authorization'] = 'Bearer ' + $window.jwtToken;
 		
-		if( $window.jwtToken !== undefined && $window.jwtToken != '')
+		if( window.jwtToken != undefined && window.jwtToken != '')
 		{
 			UserService.GetCurrent().then(function (user) {
-						//console.log(user);
 						$rootScope.firstName = user.firstName;
-						//console.log('user set: ' + $rootScope.firstName ); 
 			})
 			.catch(function (error) {
 						delete $window.jwtToken;
-						$window.location = '/login?returnUrl=' + encodeURIComponent('/app' + $window.location.hash);
+						//$window.location = '/login?returnUrl=' + encodeURIComponent('/app' + $window.location.hash);
 					});;
 		}
 		

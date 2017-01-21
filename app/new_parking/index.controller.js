@@ -9,7 +9,7 @@
 		if( $window.jwtToken !== undefined && $window.jwtToken != '')
 		{
 			var vm = this;
-
+			
 			//get current user
 			vm.user = null;
 			UserService.GetCurrent().then(function (user) {
@@ -18,6 +18,16 @@
 			
 			vm.days = ['Sun', 'Mon', 'Tue', 
 				'Wed', 'Thu', 'Fri', 'Sat'];
+				
+			vm.days_selected = new Array();
+				
+			vm.changeColor = changeColor;
+			
+			function changeColor( index ) {
+				vm.days_selected[index] = vm.days_selected[index] ? false : true;
+			}
+			
+			vm.times = ['15 minutes', '30 minutes', '45 minutes', '60 minutes'];
 			
 			// Custom drop down list using google's autocomplete api
 			/* 

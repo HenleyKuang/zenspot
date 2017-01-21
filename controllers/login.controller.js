@@ -5,7 +5,7 @@ var config = require('config.json');
 
 router.get('/', function (req, res) {
     //if already logged in, then redirect to homepage
-    if( req.session.token !== undefined )
+    if( req.session.token !== undefined && window.jwtToken != undefined )
 		res.redirect('/app');
 	else
 	{

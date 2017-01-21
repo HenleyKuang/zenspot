@@ -51,6 +51,7 @@ function getCurrentUser(req, res) {
             }
         })
         .catch(function (err) {
+			delete req.session.token;
             res.status(400).send(err);
         });
 }

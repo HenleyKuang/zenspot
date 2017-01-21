@@ -30,7 +30,6 @@ background-color:#2e6da4!important;
 }
 
 .card {
-	width: 100%!important;
     margin-top: 5px!important;
     margin-bottom: 5px!important;
 }
@@ -45,25 +44,6 @@ text-align: center;
 	margin-top: 5%!important;
     width: 70%;
     margin: 0 auto;
-}
-
-.dropdown-menu {
-	position: static;
-	display: block;
-    top: 100%;
-    left: 0;
-    min-width: 10rem;
-    padding: .5rem 0;
-    margin: -.125rem 0 0;
-    font-size: 1rem;
-    color: #292b2c;
-    text-align: left;
-    list-style: none;
-    background-color: #fff;
-    -webkit-background-clip: padding-box;
-    background-clip: padding-box;
-    border: 1px solid rgba(0,0,0,.15);
-    border-radius: .25rem;
 }
 
 .fixed-top {
@@ -125,6 +105,7 @@ padding:5%;
 border-color:rgba(0,0,0,0.7);
 color:rgba(0,0,0,0.7);
 }
+
 
 .nav-item .btn-outline-primary:hover {
 background-color:#000!important;

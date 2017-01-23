@@ -64,7 +64,7 @@
 			vm.parkings = new Array();
 			UserService.GetCurrent().then(function (user) {
 				var query = {
-					uid: user._id;
+					uid: user._id
 				};
 				ParkingServie.SearchParking(query).then(function(parkings)
 				{

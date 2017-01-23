@@ -106,16 +106,11 @@
 							
 							vm.parking.days_selected = vm.days_selected;
 							
+							vm.parking.uid = vm.user._id;
+							
 							ParkingService.Create(vm.parking)
 							.then(function (doc) {
-								var parking_id = doc.insertedIds[0];
-								UserService.LinkUserParking(vm.user, parking_id)
-								.then(function () {
 									FlashService.Success('Parking spot added!');
-								})
-								.catch(function (error) {
-									FlashService.Error(error);
-								});
 							})
 							.catch(function (error) {
 								FlashService.Error(error);

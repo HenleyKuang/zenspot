@@ -14,8 +14,8 @@
         service.GetByUsername = GetByUsername;
         service.Create = Create;
         service.Update = Update;
-		service.LinkUserParking = LinkUserParking;
-		service.getUserLinks = getUserLinks;
+		//service.LinkUserParking = LinkUserParking;
+		//service.getUserLinks = getUserLinks;
         service.Delete = Delete;
 
         return service;
@@ -44,14 +44,17 @@
             return $http.put('/api/users/' + user._id, user).then(handleSuccess, handleError);
         }
 		
+		/*
 		function LinkUserParking(user, parkingid) {
             return $http.get('/api/users/setlink', {params: { _pid: parkingid, _uid: user._id } }).then(handleSuccess, handleError);
         }
 		
+		
 		function getUserLinks(user, parkingid) {
             return $http.get('/api/users/getlinks', {params: { _uid: user._id } }).then(handleSuccess, handleError);
         }
-
+		*/
+		
         function Delete(_id) {
             return $http.delete('/api/users/' + _id).then(handleSuccess, handleError);
         }

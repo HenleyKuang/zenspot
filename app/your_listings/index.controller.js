@@ -12,6 +12,7 @@
 
 			//get current user
 			vm.user = null;
+			vm.parking = null;
 			vm.loading = true;
 			
 			vm.days = ['Sun', 'Mon', 'Tue', 
@@ -30,6 +31,8 @@
 			vm.deleteParking = deleteParking;
 			
 			function deleteParking (index) {
+					console.log(vm.parkings);
+					console.log(index);
 					ParkingService.Delete(vm.parkings[index]._id)
 					.then(function () {
 						FlashService.Success('Parking spot deleted!');
@@ -56,12 +59,6 @@
 					.catch(function (error) {
 						FlashService.Error(error);
 					});
-			}
-			
-			vm.cancelModify = cancelModify;
-			
-			function cancelModify () {
-				
 			}
 			
 			vm.parkings = new Array();

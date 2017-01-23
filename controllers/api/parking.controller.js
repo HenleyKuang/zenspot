@@ -7,7 +7,7 @@ var parkingService = require('services/parking.service');
 router.put('/add', addParking);
 router.get('/search', searchParking);
 router.put('/:_id', updateParking);
-//router.delete('/:_id', deleteParking);
+router.delete('/:_id', deleteParking);
 
 module.exports = router;
 
@@ -81,15 +81,18 @@ function updateParking(req, res) {
         });
 }
 
-/*
+
 function deleteParking(req, res) {
+	/* Need to create a function to check if the correct user is modifying their own parking spot (to prevent hackers)
+	
     var userId = req.user.sub;
     if (req.params._id !== userId) {
         // can only delete own account
-        return res.status(401).send('You can only delete your own account');
+        return res.status(401).send('You can only delete your own parking spots');
     }
+	*/
 
-    parkingService.delete(userId)
+    parkingService.delete(req.params._id)
         .then(function () {
             res.sendStatus(200);
         })
@@ -97,4 +100,3 @@ function deleteParking(req, res) {
             res.status(400).send(err);
         });
 }
-*/

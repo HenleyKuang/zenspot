@@ -40,12 +40,11 @@
                 keepAfterLocationChange: keepAfterLocationChange
             };
 			
-			setTimeout(function() { clear(); }, 5000);	
+			setTimeout(clearFlashMessage, 3000);	
 			
-			function clear() {
-				//flash.keepAfterLocationChange = false;
-				//delete $rootScope.flash;
-			}
+			function clearFlashMessage() {
+				$('.alert').remove();
+            }
         }
 
         function Error(message, keepAfterLocationChange) {

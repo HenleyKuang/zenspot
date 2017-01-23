@@ -30,7 +30,7 @@
 			vm.deleteParking = deleteParking;
 			
 			function deleteParking () {
-					ParkingService.Delete(vm.parking)
+					ParkingService.Delete(vm.parking._id)
 					.then(function () {
 						FlashService.Success('Parking spot deleted!');
 					})

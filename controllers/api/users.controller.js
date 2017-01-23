@@ -2,14 +2,14 @@
 var express = require('express');
 var router = express.Router();
 var userService = require('services/user.service');
-var linkService = require('services/link.service');
+//var linkService = require('services/link.service');
 
 // routes
 router.post('/authenticate', authenticateUser);
 router.post('/register', registerUser);
 router.get('/current', getCurrentUser);
-router.get('/setlink', linkUserParking);
-router.get('/getlinks', getUserLinks);
+//router.get('/setlink', linkUserParking);
+//router.get('/getlinks', getUserLinks);
 router.put('/:_id', updateUser);
 router.delete('/:_id', deleteUser);
 
@@ -72,6 +72,7 @@ function updateUser(req, res) {
 	});
 }
 
+/*
 function linkUserParking(req, res) {
     var userId = req.user.sub;
     if (req.query._uid !== userId) {
@@ -103,6 +104,7 @@ function getUserLinks(req, res) {
 		res.status(400).send(err);
 	});
 }
+*/
 
 function deleteUser(req, res) {
     var userId = req.user.sub;

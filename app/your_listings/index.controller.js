@@ -33,6 +33,7 @@
 			function deleteParking (index) {
 					console.log(vm.parkings);
 					console.log(index);
+					console.log(vm.parkings[index]._id);
 					ParkingService.Delete(vm.parkings[index]._id)
 					.then(function () {
 						FlashService.Success('Parking spot deleted!');
@@ -68,8 +69,12 @@
 				};
 				ParkingService.SearchParking(query).then(function(parkings)
 				{
-					//parkings.forEach(getParkingInformation);
-					vm.parkings = parkings;
+					parkings.forEach(pushIntoParkingsArray);
+					
+					function pushIntoParkingsArray(spot) {
+						vm.parkings.push(spot);
+					}
+					console.log(vm.parkings);
 				})
 				.finally(function () {
 					vm.loading = false;

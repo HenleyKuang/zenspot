@@ -1,9 +1,12 @@
 ﻿<div class="dashboard-container">
-<div class="row">
-	<h1>Your Parking Spots</h1>
-</div>
-<h1><i class="fa fa-spinner fa-spin text-center" ng-show="vm.loading"></i></h1>
-			<div ng-repeat="parking in vm.parkings" >
+<div id="modifyParking" class="carousel slide" data-ride="false" data-interval="false">	
+  <div class="carousel-inner" role="listbox">
+    <div class="carousel-item active">
+	<div class="row">
+		<h1>Your Parking Spots</h1>
+	</div>
+	<h1><i class="fa fa-spinner fa-spin text-center" ng-show="vm.loading"></i></h1>
+      <div ng-repeat="parking in vm.parkings" >
 				<div class="row">
 					<div class="card w-100">
 						<div class="card-block">
@@ -14,7 +17,7 @@
 								<div class="col">
 									<div class="row">
 										<div class="col">
-											<button class="btn btn-primary" >Modify<a href="#"></a> </button>
+											<a href="#modifyParking" role="button" data-slide="next"><button class="btn btn-primary" ng-click="vm.modifyParking($index)">Modify</button></a>
 										</div>
 										<div class="col">
 											<button class="btn btn-danger" >Delete<a href="#"></a> </button>
@@ -26,4 +29,46 @@
 					</div>
 				</div>
 			</div>
+    </div>
+    <div class="carousel-item">
+	
+	<form name="modifyParkingForm">
+	<div class="row">
+		<h1>Modify</h1>
+	</div>
+		<div class="form-group">
+			<input type="text" id="address" class="address form-control w-75 mt-3" placeholder="What is the address of the parking space you would like to list for rent?" autocomplete="off" ng-model="vm.parking.address" ng-required="true" />
+		</div>
+		
+		<label>What days are your parking spot available?</label>
+		<div class="row">
+			<div ng-repeat="day in vm.days" >
+				<div class="card mr-2">
+				  <div class="card-block">
+					<h4 class="card-title text-center">{{day}}</h4>
+				  </div>
+					<div class="card-footer">
+						<a class="btn" ng-class="vm.parking.days_selected[$index] ? 'btn-danger' : 'btn-outline-danger'" ng-click="vm.changeColor($index)" ng-model="vm.parking.days_selected[$index]">Select</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="input-group w-50 mt-3">
+			<span class="input-group-addon">$</span>
+			<input type="text" id="price" class="form-control" placeholder="What is the hourly rate?" ng-model="vm.parking.rate" ng-required="true" />
+			<span class="input-group-addon">USD</span>
+		</div>
+			
+		<div class="form-group mt-3">
+			<label>What is the minimum rental time?</label>
+			<select class="form-control w-25" ng-options="time as time for time in vm.times" ng-model="vm.parking.minimumTime" ng-required="true" >
+			</select>
+		</div>
+		
+		<a href="#modifyParking" role="button" data-slide="prev"><button class="btn btn-primary" >Save</button></a>
+		<a href="#modifyParking" role="button" data-slide="prev"><button class="btn btn-danger" >Cancel</button></a>
+    </div>
+  </div>
+</div>
 </div>

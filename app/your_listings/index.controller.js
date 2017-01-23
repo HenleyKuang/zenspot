@@ -14,6 +14,25 @@
 			vm.user = null;
 			vm.loading = true;
 			
+			vm.days = ['Sun', 'Mon', 'Tue', 
+				'Wed', 'Thu', 'Fri', 'Sat'];
+				
+			vm.days_selected = new Array();
+				
+			vm.changeColor = changeColor;
+			
+			function changeColor( index ) {
+				vm.parking.days_selected[index] = vm.parking.days_selected[index] ? false : true;
+			}
+			
+			vm.times = ['15 minutes', '30 minutes', '45 minutes', '60 minutes'];
+			
+			vm.modifyParking = modifyParking;
+			
+			function modifyParking(index) {
+				vm.parking = vm.parkings[index];
+			}
+			
 			vm.parkings = new Array();
 			UserService.GetCurrent().then(function (user) {
 				vm.user = user;

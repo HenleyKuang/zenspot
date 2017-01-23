@@ -97,12 +97,14 @@
 							else add = 0;
 							
 							vm.parking.formatted_address = results[0].formatted_address;
-							vm.parking.zip = results[0].address_components[7 + add].short_name;
-							vm.parking.state = results[0].address_components[5 + add].short_name;
-							vm.parking.city = results[0].address_components[3 + add].long_name;
+							//vm.parking.zip = results[0].address_components[7 + add].short_name;
+							//vm.parking.state = results[0].address_components[5 + add].short_name;
+							//vm.parking.city = results[0].address_components[3 + add].long_name;
 							//vm.parking.short_address = results[0].address_components[0 + add].long_name
 							//	+ ' ' + results[0].address_components[1 + add].long_name;
 							/* end of part that needs to be recoded */
+							
+							vm.parking.days_selected = vm.days_selected;
 							
 							ParkingService.Create(vm.parking)
 							.then(function (doc) {

@@ -123,7 +123,7 @@ color:#FFF;
 
 .flush-bottom {
     position: static;
-	margin-top: 200px;
+	margin-top: 100px;
 }
 
 .navbar-light .navbar-nav .nav-link {
@@ -258,6 +258,10 @@ footer i.fa {
     opacity: 1;
 }
 
+#modifyParking .carousel-item.active {
+    display: block!important;
+}
+
 /*
 #about-who img:hover {
     border-style: solid;
@@ -291,7 +295,7 @@ overflow: hidden!important;
     top: 65px;
     padding: 50px!important;
 	overflow-x: hidden!important;
-	position: fixed!important;
+	position: absolute!important;
 }
 
 .mt-md-0 {

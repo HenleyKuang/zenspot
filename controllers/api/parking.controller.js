@@ -45,6 +45,7 @@ function searchParking(req, res) {
 	{
 		var search_q = {
 			//create search query using parameters passed through req.query
+			uid: req.query.uid;
 		};
 		
 		parkingService.searchParking( search_q )

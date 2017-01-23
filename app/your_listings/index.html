@@ -20,7 +20,7 @@
 											<a href="#modifyParking" role="button" data-slide="next"><button class="btn btn-primary" ng-click="vm.modifyParking($index)">Modify</button></a>
 										</div>
 										<div class="col">
-											<button class="btn btn-danger" >Delete<a href="#"></a> </button>
+											<button class="btn btn-danger" ng-click="vm.deleteParking()" >Delete</button>
 										</div>
 									</div>
 								</div>
@@ -67,7 +67,7 @@
 		</div>
 		
 		<a href="#modifyParking" role="button" data-slide="prev"><button class="btn btn-primary" ng-click="vm.saveModify()">Save</button></a>
-		<a href="#modifyParking" role="button" data-slide="prev"><button class="btn btn-danger" ng-click="vm.deleteParking()>Cancel</button></a>
+		<a href="#modifyParking" role="button" data-slide="prev"><button class="btn btn-danger" ng-click="vm.cancelModify()">Cancel</button></a>
     </div>
   </div>
 </div>

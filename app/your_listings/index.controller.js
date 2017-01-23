@@ -29,10 +29,11 @@
 			
 			vm.deleteParking = deleteParking;
 			
-			function deleteParking () {
-					ParkingService.Delete(vm.parking._id)
+			function deleteParking (index) {
+					ParkingService.Delete(vm.parkings[index]._id)
 					.then(function () {
 						FlashService.Success('Parking spot deleted!');
+						delete vm.parkings[index];
 					})
 					.catch(function (error) {
 						FlashService.Error(error);
@@ -55,6 +56,12 @@
 					.catch(function (error) {
 						FlashService.Error(error);
 					});
+			}
+			
+			vm.cancelModify = cancelModify;
+			
+			function cancelModify () {
+				
 			}
 			
 			vm.parkings = new Array();

@@ -44,7 +44,8 @@
 				<!--filler to move menu items to the right side -->
 				<ul class="navbar-nav mr-auto"></ul>	
 				<ul class="navbar-nav mt-md-0">
-					<!-- <div>
+					<!--
+					<div>
 						<li class="nav-item active">
 							<a class="nav-link" href="/app/#/dashboard/new_parking"><button type="button" class="btn btn-outline-primary">Rent Spot</button></a>
 						</li>
@@ -87,7 +88,7 @@
     <main ui-view></main>
 
     <!-- footer -->
-    <footer class="footer" ng-class="{'fixed-bottom': isActive('/home')}">
+    <footer class="footer" ng-class="isActive()">
 		<div class="col-centered">
 				<div class="row justify-content-md-center">
 					<div class="col"> <a href="/"> <i class="fa fa-facebook">   </i> </a> </div>
@@ -115,6 +116,5 @@
 	<script src="your_listings/index.controller.js"></script>
 	<script src="search/index.controller.js"></script>
 </body>
-<script>document.body.className += ' fade-out';</script>
 
 </html>

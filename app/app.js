@@ -83,9 +83,23 @@
 			//console.log($window.location.hash);
 			//return ($window.location.hash === '#/') || ($window.location.hash === '');
 			if( document.documentElement.clientHeight > document.documentElement.offsetHeight )
-				return true;
-			return false;
+				return 'fixed-bottom';
+			return 'flush-bottom';
 		}
+		
+	   angular.element($window).bind('resize', function(){
+         if( document.documentElement.clientHeight > document.documentElement.offsetHeight )
+		 {
+			 $('.footer').removeClass('flush-bottom');
+			$('.footer').addClass('fixed-bottom');
+		 }
+		 else 		
+		{
+			 $('.footer').removeClass('fixed-bottom');
+			$('.footer').addClass('flush-bottom');
+		 }
+         scope.$digest();
+       });
 		
 		 
         // update active tab on state change

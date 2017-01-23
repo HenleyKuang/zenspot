@@ -121,8 +121,13 @@ background-color:#000!important;
 color:#FFF;
 }
 
+.flush-bottom {
+    position: static;
+	margin-top: 200px;
+}
+
 .navbar-light .navbar-nav .nav-link {
-margin:0 10px;
+	margin:0 10px;
 }
 
 .pac-icon {

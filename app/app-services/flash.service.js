@@ -43,8 +43,8 @@
 			setTimeout(function() { clear(); }, 5000);	
 			
 			function clear() {
-				flash.keepAfterLocationChange = false;
-				delete $rootScope.flash;
+				//flash.keepAfterLocationChange = false;
+				//delete $rootScope.flash;
 			}
         }
 

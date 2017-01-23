@@ -96,7 +96,9 @@ function update(_id, parkingParam) {
 		
         updateParking();
     });
-
+	
+	parkingParam = _.omit(parkingParam, '_id');
+	
     function updateParking() {
         db.parking.update(
             { _id: mongo.helper.toObjectID(_id) },

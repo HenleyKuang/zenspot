@@ -27,6 +27,18 @@
 			
 			vm.times = ['15 minutes', '30 minutes', '45 minutes', '60 minutes'];
 			
+			vm.deleteParking = deleteParking;
+			
+			function deleteParking () {
+					ParkingService.Delete(vm.parking)
+					.then(function () {
+						FlashService.Success('Parking spot deleted!');
+					})
+					.catch(function (error) {
+						FlashService.Error(error);
+					});
+			}
+			
 			vm.modifyParking = modifyParking;
 			
 			function modifyParking(index) {
@@ -36,7 +48,13 @@
 			vm.saveModify = saveModify;
 			
 			function saveModify () {
-				
+					ParkingService.Update(vm.parking)
+					.then(function () {
+						FlashService.Success('Parking spot updated!');
+					})
+					.catch(function (error) {
+						FlashService.Error(error);
+					});
 			}
 			
 			vm.parkings = new Array();

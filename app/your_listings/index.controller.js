@@ -66,7 +66,7 @@
 				var query = {
 					uid: user._id
 				};
-				ParkingServie.SearchParking(query).then(function(parkings)
+				ParkingService.SearchParking(query).then(function(parkings)
 				{
 					//parkings.forEach(getParkingInformation);
 					vm.parkings = parkings;

@@ -12,7 +12,7 @@ var parking_service = {};
 parking_service.getById = getById;
 parking_service.searchParking = searchParking;
 parking_service.create = create;
-//parking_service.update = update;
+parking_service.update = update;
 parking_service.delete = _delete;
 
 module.exports = parking_service;
@@ -86,49 +86,21 @@ function create(parkingParam) {
     return deferred.promise;
 }
 
-/*
+
 function update(_id, parkingParam) {
     var deferred = Q.defer();
 
     // validation
     db.parking.findById(_id, function (err, user) {
         if (err) deferred.reject(err.name + ': ' + err.message);
-
-        if (user.username !== parkingParam.username) {
-            // username has changed so check if the new username is already taken
-            db.parking.findOne(
-                { username: parkingParam.username },
-                function (err, user) {
-                    if (err) deferred.reject(err.name + ': ' + err.message);
-
-                    if (user) {
-                        // username already exists
-                        deferred.reject('Username "' + req.body.username + '" is already taken')
-                    } else {
-                        updateUser();
-                    }
-                });
-        } else {
-            updateUser();
-        }
+		
+        updateParking();
     });
 
-    function updateUser() {
-        // fields to update
-        var set = {
-            firstName: parkingParam.firstName,
-            lastName: parkingParam.lastName,
-            username: parkingParam.username,
-        };
-
-        // update password if it was entered
-        if (parkingParam.password) {
-            set.hash = bcrypt.hashSync(parkingParam.password, 10);
-        }
-
+    function updateParking() {
         db.parking.update(
             { _id: mongo.helper.toObjectID(_id) },
-            { $set: set },
+            { $set: parkingParam },
             function (err, doc) {
                 if (err) deferred.reject(err.name + ': ' + err.message);
 
@@ -138,7 +110,7 @@ function update(_id, parkingParam) {
 
     return deferred.promise;
 }
-*/
+
 
 function _delete(_id) {
     var deferred = Q.defer();

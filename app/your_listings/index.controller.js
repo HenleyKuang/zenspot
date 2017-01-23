@@ -33,6 +33,12 @@
 				vm.parking = vm.parkings[index];
 			}
 			
+			vm.saveModify = saveModify;
+			
+			function saveModify () {
+				
+			}
+			
 			vm.parkings = new Array();
 			UserService.GetCurrent().then(function (user) {
 				vm.user = user;

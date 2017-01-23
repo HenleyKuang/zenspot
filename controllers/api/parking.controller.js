@@ -6,8 +6,7 @@ var parkingService = require('services/parking.service');
 // routes
 router.put('/add', addParking);
 router.get('/search', searchParking);
-//router.get('/current', getCurrentUser);
-//router.put('/:_id', updateParking);
+router.put('/:_id', updateParking);
 //router.delete('/:_id', deleteParking);
 
 module.exports = router;
@@ -62,30 +61,18 @@ function searchParking(req, res) {
 	}
 }
 
-/*
-function getCurrentUser(req, res) {
-    parkingService.getById(req.user.sub)
-        .then(function (user) {
-            if (user) {
-                res.send(user);
-            } else {
-                res.sendStatus(404);
-            }
-        })
-        .catch(function (err) {
-            res.status(400).send(err);
-        });
-}
-
-
 function updateParking(req, res) {
-    var userId = req.user.sub;
+    
+	/* Need to create a function to check if the correct user is modifying their own parking spot (to prevent hackers)
+	
+	var userId = req.user.sub;
     if (req.params._id !== userId) {
         // can only update own account
-        return res.status(401).send('You can only update your own account');
+        return res.status(401).send('You can only update your own parking spots');
     }
+	*/
 
-    parkingService.update(userId, req.body)
+    parkingService.update(req.params._id, req.body)
         .then(function () {
             res.sendStatus(200);
         })
@@ -94,6 +81,7 @@ function updateParking(req, res) {
         });
 }
 
+/*
 function deleteParking(req, res) {
     var userId = req.user.sub;
     if (req.params._id !== userId) {

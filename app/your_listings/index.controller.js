@@ -5,7 +5,7 @@
         .module('app')
         .controller('Your_Listings.IndexController', Controller);
 
-    function Controller($window, UserService, ParkingService, FlashService) {
+    function Controller($window, $scope, UserService, ParkingService, FlashService) {
 		if( $window.jwtToken !== undefined && $window.jwtToken != '')
 		{
 			var vm = this;
@@ -14,12 +14,11 @@
 			vm.user = null;
 			vm.parking = null;
 			vm.loading = true;
+			var modifyIndex = 0;
 			
 			vm.days = ['Sun', 'Mon', 'Tue', 
 				'Wed', 'Thu', 'Fri', 'Sat'];
-				
-			vm.days_selected = new Array();
-				
+			
 			vm.changeColor = changeColor;
 			
 			function changeColor( index ) {
@@ -31,13 +30,10 @@
 			vm.deleteParking = deleteParking;
 			
 			function deleteParking (index) {
-					console.log(vm.parkings);
-					console.log(index);
-					console.log(vm.parkings[index]._id);
 					ParkingService.Delete(vm.parkings[index]._id)
 					.then(function () {
 						FlashService.Success('Parking spot deleted!');
-						delete vm.parkings[index];
+						vm.parkings.splice(vm.parkings.indexOf(index), 1);
 					})
 					.catch(function (error) {
 						FlashService.Error(error);
@@ -47,7 +43,8 @@
 			vm.modifyParking = modifyParking;
 			
 			function modifyParking(index) {
-				vm.parking = vm.parkings[index];
+				vm.parking = $.extend(true,{},vm.parkings[index]);
+				modifyIndex = index;
 			}
 			
 			vm.saveModify = saveModify;
@@ -56,6 +53,7 @@
 					ParkingService.Update(vm.parking)
 					.then(function () {
 						FlashService.Success('Parking spot updated!');
+						vm.parkings[modifyIndex] = $.extend(true,{}, vm.parking);
 					})
 					.catch(function (error) {
 						FlashService.Error(error);
@@ -74,7 +72,6 @@
 					function pushIntoParkingsArray(spot) {
 						vm.parkings.push(spot);
 					}
-					console.log(vm.parkings);
 				})
 				.finally(function () {
 					vm.loading = false;

@@ -41,12 +41,12 @@ function searchParking(req, res) {
 				res.status(400).send(err);
 			});
 	}
-	else //else do a search by query string
+	else//else do a search by query string
 	{
-		var search_q = {
+		var search_q = req.query.uid ? {
 			//create search query using parameters passed through req.query
 			uid: req.query.uid
-		};
+		} : {};
 		
 		parkingService.searchParking( search_q )
 			.then(function (parking) {

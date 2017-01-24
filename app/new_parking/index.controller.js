@@ -12,6 +12,15 @@
 			
 			//get current user
 			vm.user = null;
+			
+			vm.loading = false;
+			vm.addedMsg = false;
+			vm.clickYourSpots = clickYourSpots;
+			
+			function clickYourSpots () {
+				$(".nav-link[ui-sref='.your_listings']").click();
+			}
+			
 			UserService.GetCurrent().then(function (user) {
 						vm.user = user;
 					});
@@ -59,7 +68,7 @@
 				service.getQueryPredictions({ input: address_text }, displaySuggestions);
 			}
 			*/
-				
+
 			var address_box = document.getElementById('address');
 			var autocomplete = new google.maps.places.Autocomplete(address_box);
 			
@@ -82,6 +91,7 @@
 			function addParking() {	
 				if( vm.parking !== undefined )
 				{
+					vm.loading =true;
 					var address = vm.parking.address;
 					var geocoder = new google.maps.Geocoder();
 					formatAddress(geocoder, address);
@@ -89,7 +99,7 @@
 					function formatAddress(geocoder, address) {
 						geocoder.geocode({'address': address}, function(results, status) {
 						  if (status === 'OK') {	
-							console.log(results[0]);
+							//console.log(results[0]);
 							/* this part needs to be recoded to traverse address component types 
 								currently hard-coded indexes */
 							if( results[0].address_components[0].types[0] != 'street_number' )
@@ -110,6 +120,8 @@
 							
 							ParkingService.Create(vm.parking)
 							.then(function (doc) {
+									vm.addedMsg = true;
+									vm.loading = false;
 									FlashService.Success('Parking spot added!');
 							})
 							.catch(function (error) {

@@ -1,6 +1,6 @@
 ﻿<div class="dashboard-container">
 	<h1>New Parking for Rent</h1>
-    <form name="newparking">
+	<form name="newparking" ng-show="!vm.addedMsg">
 			<div class="form-group">
 				<input type="text" id="address" class="address form-control w-75 mt-3" placeholder="What is the address of the parking space you would like to list for rent?" autocomplete="off" ng-model="vm.parking.address" ng-required="true" />
 			</div>
@@ -17,46 +17,51 @@
             <input type="text" id="state" class="form-control" placeholder="Choose a State" ng-model="vm.parking.state" required />
         </div>
 		-->
-		
-		<label>What days are your parking spot available?</label>
-		<div class="row">
-			<div ng-repeat="day in vm.days" >
-					<div class="card mr-2">
-					  <div class="card-block">
-						<h4 class="card-title text-center">{{day}}</h4>
-					  </div>
-						<div class="card-footer">
-							<a class="btn" ng-class="vm.days_selected[$index] ? 'btn-danger' : 'btn-outline-danger'" ng-click="vm.changeColor($index)">Select</a>
+			<label>What days are your parking spot available?</label>
+			<div class="row">
+				<div ng-repeat="day in vm.days" >
+						<div class="card mr-2">
+						  <div class="card-block">
+							<h4 class="card-title text-center">{{day}}</h4>
+						  </div>
+							<div class="card-footer">
+								<a class="btn" ng-class="vm.days_selected[$index] ? 'btn-danger' : 'btn-outline-danger'" ng-click="vm.changeColor($index)">Select</a>
+							</div>
 						</div>
-					</div>
+				</div>
 			</div>
-		</div>
-		
-		<div class="input-group w-50 mt-3">
-			<span class="input-group-addon">$</span>
-			<input type="text" id="price" class="form-control" placeholder="What is the hourly rate?" ng-model="vm.parking.rate" ng-required="true" />
-			<span class="input-group-addon">USD</span>
-		</div>
 			
-		<!-- 
-		<div class="dropdown mt-3 w-50">
-			<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-				{{vm.selectedItem}}
-			</button>
-			<div class="dropdown-menu w-50" aria-labelledby="dropdownMenuButton">
-				<a class="dropdown-item" ng-repeat="time in vm.times" ng-click="vm.dropboxitemselected(time)">{{time}}</a>
+			<div class="input-group w-50 mt-3">
+				<span class="input-group-addon">$</span>
+				<input type="text" id="price" class="form-control" placeholder="What is the hourly rate?" ng-model="vm.parking.rate" ng-required="true" />
+				<span class="input-group-addon">USD</span>
 			</div>
-		</div>
-		-->
-		<div class="form-group mt-3">
-			<label>What is the minimum rental time?</label>
-			<select class="form-control w-25" ng-options="time as time for time in vm.times" ng-model="vm.parking.minimumTime" ng-required="true" >
-			</select>
-		</div>
+				
+			<!-- 
+			<div class="dropdown mt-3 w-50">
+				<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					{{vm.selectedItem}}
+				</button>
+				<div class="dropdown-menu w-50" aria-labelledby="dropdownMenuButton">
+					<a class="dropdown-item" ng-repeat="time in vm.times" ng-click="vm.dropboxitemselected(time)">{{time}}</a>
+				</div>
+			</div>
+			-->
+			<div class="form-group mt-3">
+				<label>What is the minimum rental time?</label>
+				<select class="form-control w-25" ng-options="time as time for time in vm.times" ng-model="vm.parking.minimumTime" ng-required="true" >
+				</select>
+			</div>
 
+			
+			<div class="form-group mt-3">
+				<button class="btn btn-primary" ng-show="!vm.loading" ng-click="newparking.$valid && vm.addParking()">Add</button>
+				<h1><i class="fa fa-spinner fa-spin text-center" ng-show="vm.loading"></i></h1>
+			</div>
+		</form>
 		
-        <div class="form-group mt-3">
-            <button class="btn btn-primary" ng-click="newparking.$valid && vm.addParking()">Add</button>
-        </div>
-    </form>
+		<div ng-if="vm.addedMsg">
+			<button class="btn btn-primary" ng-click="vm.clickYourSpots()">View Your Listings</button></a>
+			<button class="btn btn-danger" ng-click="vm.addedMsg = false">Add More</button>
+		</div>
 </div>

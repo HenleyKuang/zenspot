@@ -3,7 +3,25 @@
 
     angular
         .module('app')
-        .controller('New_Parking.IndexController', Controller);
+        .controller('New_Parking.IndexController', Controller)
+		.directive('myPostRepeatDirective', function() {
+		  return function(scope, element, attrs) {
+			if (scope.$last){
+			  // iteration is complete, do whatever post-processing
+			  // is necessary
+			  	var options = {
+					now: "8:00", //hh:mm 24 hour format only, defaults to current time
+					twentyFour: false //Display 24 hour format, defaults to false
+				};
+				$('.t-start').wickedpicker(options);
+				var options2 = {
+					now: "17:00", //hh:mm 24 hour format only, defaults to current time
+					twentyFour: false  //Display 24 hour format, defaults to false
+				};
+				$('.t-end').wickedpicker(options2);
+			}
+		  };
+		});
 
     function Controller($window, UserService, ParkingService, FlashService) {
 		if( $window.jwtToken !== undefined && $window.jwtToken != '')
@@ -37,6 +55,26 @@
 			}
 			
 			vm.times = ['15 minutes', '30 minutes', '45 minutes', '60 minutes'];
+			
+			vm.showStartTime = showStartTime;
+			function showStartTime( index ) {
+				if( !$('.wickedpicker__controls').is(":visible") )
+				{
+					setTimeout( function () {
+					$('#timestart-' + index).click();
+					}, 200);
+				}
+			}
+			
+			vm.showEndTime = showEndTime;
+			function showEndTime( index ) {
+				if( !$('.wickedpicker__controls').is(":visible") )
+				{
+					setTimeout( function () {
+					$('#timeend-' + index).click();
+					}, 200);
+				}
+			}
 			
 			// Custom drop down list using google's autocomplete api
 			/* 
@@ -115,6 +153,18 @@
 							/* end of part that needs to be recoded */
 							
 							vm.parking.days_selected = vm.days_selected;
+							
+							vm.parking.hours_selected = new Array(7);
+							vm.parking.days_selected.forEach(function(day, index) {
+								if( day )
+								{
+									var time = {
+										start_time: $('#timestart-' + index).val(),
+										end_time: $('#timeend-' + index).val()
+									};
+									vm.parking.hours_selected[index] = time;
+								}
+							});
 							
 							vm.parking.uid = vm.user._id;
 							

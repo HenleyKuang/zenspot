@@ -34,6 +34,10 @@ background-color:#2e6da4!important;
     margin-bottom: 5px!important;
 }
 
+.card-block {
+	padding: 0.60rem;
+}
+
 .col-centered {
 float:none;
 margin:0 auto;
@@ -42,8 +46,13 @@ text-align: center;
 
 .dashboard-container {
 	margin-top: 5%!important;
-    width: 70%;
+    width: 85%;
     margin: 0 auto;
+}
+
+.days-row {
+	transition: all 0.5s;
+	min-width: 150px;
 }
 
 .fa-user-circle-o {
@@ -130,6 +139,7 @@ color:#FFF;
 	margin:0 10px;
 }
 
+
 .pac-icon {
     width: 0px;
     height: 0px;
@@ -180,10 +190,22 @@ color:#FFF;
   border-radius: 0;
 }
 
+.timerange {
+	max-width: 95px;
+}
+
+.w-25 {
+    min-width: 200px!important;
+}
+
 .wrap-center {
 margin-top:5%!important;
 text-align:center;
 width:100%;
+}
+
+a:hover {
+ cursor:pointer;
 }
 
 about-values{
@@ -280,6 +302,10 @@ display:none;
 margin-top:1%!important;
 }
 
+.btn-outline-danger:hover {
+    background-color: rgba(255, 255, 255, 0);
+}
+
 .form-container {
     width: 300px!important;
 }
@@ -293,7 +319,6 @@ overflow: hidden!important;
 
 .maindash {
     top: 65px;
-    padding: 50px!important;
 	overflow-x: hidden!important;
 	position: absolute!important;
 }
@@ -302,7 +327,6 @@ overflow: hidden!important;
 float:right!important;
 margin-top:2%!important;
 text-align:right!important;
-}
 }
 
 

@@ -5,25 +5,24 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	
     <title>ZenSpot - Easy Parking</title>
-
-	<!--JQUERY-->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-
+	
 	<!-- Latest compiled and CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
 	
 	<!--Google Fonts - PT Sans -->
 	<link href='https://fonts.googleapis.com/css?family=PT+Sans' rel='stylesheet'  type='text/css'>
 	
-	<!--Google Maps API -->
-	<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB1hujWG0MPyU9Hx2GlpvU_kYqwR9C_i9U&libraries=places" type="text/javascript"></script>
-
+	<!-- Date Time Picker -->
+    <link rel="stylesheet" type="text/css" media="screen"
+     href="http://tarruda.github.com/bootstrap-datetimepicker/assets/css/bootstrap-datetimepicker.min.css">
+	 
     <link href="app-content/app.css" rel="stylesheet" />
 	<link href="app-content/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+	<link href="app-content/wickedpicker.css" rel="stylesheet" />
 </head>
 
 <body>
+
     <!-- header -->
     <header>
 		<nav class="navbar fixed-top navbar-toggleable-md navbar-light">
@@ -102,12 +101,21 @@
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.min.js"></script>
-    <!-- application scripts -->
+    
+	<!-- Bootstrap -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+	
+	<!--Google Maps API -->
+	<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB1hujWG0MPyU9Hx2GlpvU_kYqwR9C_i9U&libraries=places" type="text/javascript"></script>
+
+	
+	<!-- application scripts -->
     <script src="app.js"></script>
     <script src="app-services/user.service.js"></script>
 	<script src="app-services/parking.service.js"></script>
     <script src="app-services/flash.service.js"></script>
 	<script src="app-services/typed.js"></script>
+	<script src="app-services/wickedpicker.js"></script>
     <script src="home/index.controller.js"></script>
 	<script src="dashboard/index.controller.js"></script>
     <script src="account/index.controller.js"></script>

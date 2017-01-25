@@ -111,7 +111,7 @@ z-index:-100;
 .jumbotron {
 background:transparent!important;
 height:100%;
-//margin-top: 10%!important;
+margin-top: 10%!important;
 }
 
 .label-msg-center {
@@ -339,13 +339,5 @@ text-align:right!important;
 .dashboard-container {
 	width: 100%!important;
     margin-bottom: 80px!important;
-}
-
-.phone {
-	display: none;
-}
-
-.phone-show {
-	display: block!important;
 }
 }

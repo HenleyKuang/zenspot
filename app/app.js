@@ -86,8 +86,14 @@
 				return 'fixed-bottom';
 			return 'flush-bottom';
 		}
-		
+
 	   angular.element($window).bind('resize', function(){
+		   var screenWidth = document.documentElement.clientWidth;
+		   if (screenWidth <= 575){
+				$('.dashboard-mobile').css('display', 'block');
+			}
+			else $('.dashboard-mobile').css('display', 'none');
+		   
          if( document.documentElement.clientHeight-100 > document.documentElement.offsetHeight )
 		 {
 			 $('.footer').removeClass('flush-bottom');

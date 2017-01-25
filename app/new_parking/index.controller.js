@@ -154,30 +154,53 @@
 							
 							vm.parking.days_selected = vm.days_selected;
 							
+							var badAvailability = false;
 							vm.parking.hours_selected = new Array(7);
 							vm.parking.days_selected.forEach(function(day, index) {
 								if( day )
 								{
-									var time = {
-										start_time: $('#timestart-' + index).val(),
-										end_time: $('#timeend-' + index).val()
-									};
-									vm.parking.hours_selected[index] = time;
+									var startTime = $('#timestart-' + index).val().split(' ');
+									if( startTime[3] == 'AM' && startTime[0] == '12')
+										startTime[0] = 0;
+									var startMinute = startTime[0]*60 + parseInt(startTime[2]);
+									if( startTime[3] == 'PM' && startTime[0] != '12')
+										startMinute += 720;
+									
+									var endTime = $('#timeend-' + index).val().split(' ');
+									if( endTime[3] == 'AM' && endTime[0] == '12')
+										endTime[0] = 0;
+									var endMinute = endTime[0]*60 + parseInt(endTime[2]);
+									if( endTime[3] == 'PM' && endTime[0] != '12' )
+										endMinute += 720;
+																
+									if( startMinute >= endMinute )
+										badAvailability = true;
+									else 
+									{
+										var time = {
+											start_time: startMinute,
+											end_time: endMinute
+										};
+										vm.parking.hours_selected[index] = time;
+									}
 								}
 							});
 							
-							vm.parking.uid = vm.user._id;
-							
-							ParkingService.Create(vm.parking)
-							.then(function (doc) {
-									vm.addedMsg = true;
-									vm.loading = false;
-									FlashService.Success('Parking spot added!');
-							})
-							.catch(function (error) {
-								FlashService.Error(error);
-							});
-							
+							if( !badAvailability )
+							{
+								vm.parking.uid = vm.user._id;
+								
+								ParkingService.Create(vm.parking)
+								.then(function (doc) {
+										vm.addedMsg = true;
+										vm.loading = false;
+										FlashService.Success('Parking spot added!');
+								})
+								.catch(function (error) {
+									FlashService.Error(error);
+								});
+							}
+							else FlashService.Error('Error: Your availabilty must have an end time that is greater than the start time.');
 						  } else {
 							FlashService.Error('Format Address was not successful. The following error occurred: ' + status);
 						  }

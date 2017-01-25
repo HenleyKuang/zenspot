@@ -334,6 +334,12 @@ margin-top:2%!important;
 text-align:right!important;
 }
 
+.sidebar {
+	display: none!important;
+}
+
+}
+
 
 @media screen and (max-width: 570px){
 .dashboard-container {
@@ -347,5 +353,9 @@ text-align:right!important;
 
 .phone-show {
 	display: block!important;
+}
+
+.wrap-center {
+	margin-top: 0px!important;
 }
 }

@@ -86,10 +86,18 @@
 				return 'fixed-bottom';
 			return 'flush-bottom';
 		}
+		
+		$('.navbar-toggler').on('click', function () {
+		   var screenWidth = document.documentElement.clientWidth;
+		   if (screenWidth <= 991){
+				$('.dashboard-mobile').css('display', 'block');
+			}
+			else $('.dashboard-mobile').css('display', 'none');
+		} );
 
 	   angular.element($window).bind('resize', function(){
 		   var screenWidth = document.documentElement.clientWidth;
-		   if (screenWidth <= 575){
+		   if (screenWidth <= 991){
 				$('.dashboard-mobile').css('display', 'block');
 			}
 			else $('.dashboard-mobile').css('display', 'none');

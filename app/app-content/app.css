@@ -334,6 +334,14 @@ text-align:right!important;
 	display: none!important;
 }
 
+.phone {
+	display: none;
+}
+
+.phone-show {
+	display: block!important;
+}
+
 }
 
 
@@ -341,14 +349,6 @@ text-align:right!important;
 .dashboard-container {
 	width: 100%!important;
     margin-bottom: 80px!important;
-}
-
-.phone {
-	display: none;
-}
-
-.phone-show {
-	display: block!important;
 }
 
 .wrap-center {

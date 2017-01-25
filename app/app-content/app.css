@@ -307,6 +307,11 @@ display:none;
     background-color: rgba(255, 255, 255, 0);
 }
 
+.dashboard-container {
+	width: 100%!important;
+    margin-bottom: 80px!important;
+}
+
 .form-container {
     width: 300px!important;
 }
@@ -346,11 +351,6 @@ text-align:right!important;
 
 
 @media screen and (max-width: 570px){
-.dashboard-container {
-	width: 100%!important;
-    margin-bottom: 80px!important;
-}
-
 .wrap-center {
 	margin-top: 0px!important;
 }

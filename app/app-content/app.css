@@ -303,10 +303,6 @@ font-size:200%;
 display:none;
 }
 
-.btn-primary {
-margin-top:1%!important;
-}
-
 .btn-outline-danger:hover {
     background-color: rgba(255, 255, 255, 0);
 }

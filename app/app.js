@@ -82,7 +82,7 @@
 		$rootScope.isActive = function () {
 			//console.log($window.location.hash);
 			//return ($window.location.hash === '#/') || ($window.location.hash === '');
-			if( document.documentElement.clientHeight-100 > document.documentElement.offsetHeight )
+			if( document.documentElement.clientHeight > document.documentElement.offsetHeight )
 				return 'fixed-bottom';
 			return 'flush-bottom';
 		}
@@ -94,7 +94,7 @@
 			}
 			else $('.dashboard-mobile').css('display', 'none');
 		   
-         if( document.documentElement.clientHeight-100 > document.documentElement.offsetHeight )
+         if( document.documentElement.clientHeight > document.documentElement.offsetHeight )
 		 {
 			 $('.footer').removeClass('flush-bottom');
 			$('.footer').addClass('fixed-bottom');

@@ -51,7 +51,9 @@ function searchParking(req, res) {
 		parkingService.searchParking( search_q )
 			.then(function (parking) {
 				if (parking) {
-					res.addHeader("Access-Control-Allow-Origin", "*");
+					res.setHeader("Access-Control-Allow-Origin", "*");
+					res.setHeader("Access-Control-Allow-Methods", "GET,POST,PUT,DELETE,OPTIONS");
+					res.setHeader("Access-Control-Allow-Headers", "Content-Type");
 					res.send(parking);
 				} else {
 					res.sendStatus(404);

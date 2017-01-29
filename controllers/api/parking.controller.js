@@ -24,6 +24,7 @@ function addParking(req, res) {
 }
 
 function searchParking(req, res) {
+	res.addHeader("Access-Control-Allow-Origin", "*");
 	//check if searching by id
 	var _pid = req.query._id;
 	//console.log( _pid );

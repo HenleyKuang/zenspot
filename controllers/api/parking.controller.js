@@ -52,7 +52,7 @@ function searchParking(req, res) {
 			.then(function (parking) {
 				if (parking) {
 					res.setHeader("Access-Control-Allow-Origin", "*");
-					res.setHeader("Access-Control-Allow-Methods", "GET,POST,PUT,DELETE,OPTIONS");
+					res.setHeader("Access-Control-Allow-Methods", "GET");
 					res.setHeader("Access-Control-Allow-Headers", "Content-Type");
 					res.send(parking);
 				} else {
